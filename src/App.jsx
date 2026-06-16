@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import DosageCalculator from './pages/DosageCalculator';
 import Products from './pages/Products';
 import Education from './pages/Education';
+import Admin from './pages/Admin';
 import AgeVerificationGate from './components/AgeVerificationGate';
 
 export default function App() {
@@ -18,6 +19,8 @@ export default function App() {
         return <Products />;
       case 'education':
         return <Education />;
+      case 'admin':
+        return <Admin />;
       default:
         return <Home onNavigate={setPage} />;
     }
@@ -26,11 +29,11 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <AgeVerificationGate />
-      <Header currentPage={page} onNavigate={setPage} />
+      {page !== 'admin' && <Header currentPage={page} onNavigate={setPage} />}
       <main className="flex-1">
         {renderPage()}
       </main>
-      <Footer />
+      {page !== 'admin' && <Footer onNavigate={setPage} />}
     </div>
   );
 }
