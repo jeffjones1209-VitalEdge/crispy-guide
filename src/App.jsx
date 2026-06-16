@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import DosageCalculator from './pages/DosageCalculator';
 import Products from './pages/Products';
 import Education from './pages/Education';
+import AgeVerificationGate from './components/AgeVerificationGate';
 
 export default function App() {
   const [page, setPage] = useState('home');
@@ -24,6 +25,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <AgeVerificationGate />
       <Header currentPage={page} onNavigate={setPage} />
       <main className="flex-1">
         {renderPage()}
