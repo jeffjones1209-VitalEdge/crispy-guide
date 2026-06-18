@@ -1,4 +1,4 @@
-export default function Footer() {
+export default function Footer({ onNavigate }) {
   return (
     <footer className="bg-gray-900 text-gray-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -27,10 +27,10 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Dosage Calculator</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Peptide Catalog</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Research Library</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">FAQ</a></li>
+              <li><button onClick={() => onNavigate('calculator')} className="hover:text-white transition-colors">Dosage Calculator</button></li>
+              <li><button onClick={() => onNavigate('products')} className="hover:text-white transition-colors">Peptide Catalog</button></li>
+              <li><button onClick={() => onNavigate('education')} className="hover:text-white transition-colors">Research Library</button></li>
+              <li><button className="hover:text-white transition-colors">FAQ</button></li>
             </ul>
           </div>
 
@@ -38,18 +38,26 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Support</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Contact Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Shipping Info</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Returns</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><button className="hover:text-white transition-colors">Contact Us</button></li>
+              <li><button className="hover:text-white transition-colors">Shipping Info</button></li>
+              <li><button className="hover:text-white transition-colors">Returns</button></li>
+              <li><button className="hover:text-white transition-colors">Privacy Policy</button></li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs">
           <p>&copy; {new Date().getFullYear()} VItalEdge. All rights reserved.</p>
-          <p className="mt-2 sm:mt-0">
-            Made for the research community.
+          <p className="mt-2 sm:mt-0 flex items-center gap-4">
+            <span>Made for the research community.</span>
+            {/* Hidden admin link — only visible to those who know */}
+            <button
+              onClick={() => onNavigate('admin')}
+              className="text-gray-700 hover:text-gray-500 transition-colors select-none"
+              title="Admin panel"
+            >
+              ⚙️
+            </button>
           </p>
         </div>
       </div>
