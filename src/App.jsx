@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { CartProvider } from './context/CartContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -13,27 +14,22 @@ export default function App() {
 
   const renderPage = () => {
     switch (page) {
-      case 'calculator':
-        return <DosageCalculator />;
-      case 'products':
-        return <Products />;
-      case 'education':
-        return <Education />;
-      case 'admin':
-        return <Admin />;
-      default:
-        return <Home onNavigate={setPage} />;
+      case 'calculator': return <DosageCalculator />;
+      case 'products': return <Products />;
+      case 'education': return <Education />;
+      case 'admin': return <Admin />;
+      default: return <Home onNavigate={setPage} />;
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <AgeVerificationGate />
-      {page !== 'admin' && <Header currentPage={page} onNavigate={setPage} />}
-      <main className="flex-1">
-        {renderPage()}
-      </main>
-      {page !== 'admin' && <Footer onNavigate={setPage} />}
-    </div>
+    <CartProvider>
+      <div className="min-h-screen flex flex-col">
+        <AgeVerificationGate />
+        {page !== 'admin' && <Header currentPage={page} onNavigate={setPage} />}
+        <main className="flex-1">{renderPage()}</main>
+        {page !== 'admin' && <Footer onNavigate={setPage} />}
+      </div>
+    </CartProvider>
   );
 }
