@@ -34,3 +34,7 @@ dist-ssr
 # OS
 .DS_Store
 Thumbs.db
+
+# Other teams' work
+content/
+supply-chain/
