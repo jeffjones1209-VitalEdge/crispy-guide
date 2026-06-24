@@ -4,20 +4,15 @@ export default function CartDrawer({ open, onClose }) {
   const { items, updateQuantity, removeItem, subtotal, total, discountAmount } = useCart();
 
   const handleBuyNow = (item) => {
-    window.open(item.stripeUrl, '_blank', 'noopener,noreferrer');
+    // Stripe payment link is for 1 unit — customer adjusts qty at Stripe checkout
+    window.open(item.stripeUrl + '?quantity=' + item.quantity, '_blank', 'noopener,noreferrer');
   };
 
   const handleCheckoutAll = () => {
-    // For multiple items, open each Stripe link in sequence
-    // In production, you'd use Stripe Checkout Session API
     if (items.length === 0) return;
-    if (items.length === 1) {
-      window.open(items[0].stripeUrl, '_blank', 'noopener,noreferrer');
-      return;
-    }
-    // Open all in new tabs
+    // Stripe handles quantity at checkout. Open each unique item's link.
     items.forEach(item => {
-      window.open(item.stripeUrl, '_blank', 'noopener,noreferrer');
+      window.open(item.stripeUrl + '?quantity=' + item.quantity, '_blank', 'noopener,noreferrer');
     });
   };
 
@@ -119,8 +114,13 @@ export default function CartDrawer({ open, onClose }) {
                 Checkout on Stripe →
               </button>
               <p className="text-xs text-gray-400 text-center">
-                Secure payment via Stripe. You'll complete your purchase on Stripe's site.
+                Secure payment via Stripe. Shipping calculated at checkout.
               </p>
+              {items.some(i => i.quantity > 1) && (
+                <p className="text-xs text-amber-600 text-center">
+                  ⚠️ Adjust quantity in Stripe checkout for items with multiple units.
+                </p>
+              )}
             </div>
           )}
         </div>
