@@ -1,81 +1,91 @@
 import { useState, useMemo } from 'react';
-import { peptides, categories } from '../data/peptides';
+import { useCart, getProducts, getDiscount } from '../context/CartContext';
 
-const placeholderPricing = {
-  'bpc-157': { price: 39.99, sizes: [{ size: '5 mg', price: 39.99 }, { size: '10 mg', price: 69.99 }] },
-  'tb-500': { price: 49.99, sizes: [{ size: '5 mg', price: 49.99 }, { size: '10 mg', price: 89.99 }] },
-  'semaglutide': { price: 89.99, sizes: [{ size: '3 mg', price: 89.99 }, { size: '5 mg', price: 139.99 }] },
-  'tirzepatide': { price: 129.99, sizes: [{ size: '5 mg', price: 129.99 }, { size: '10 mg', price: 199.99 }, { size: '15 mg', price: 269.99 }] },
-  'aod-9604': { price: 44.99, sizes: [{ size: '5 mg', price: 44.99 }, { size: '10 mg', price: 79.99 }] },
-  'cjc-1295': { price: 54.99, sizes: [{ size: '5 mg', price: 54.99 }, { size: '10 mg', price: 94.99 }] },
-  'cjc-1295-no-dac': { price: 44.99, sizes: [{ size: '5 mg', price: 44.99 }, { size: '10 mg', price: 79.99 }] },
-  'ipamorelin': { price: 44.99, sizes: [{ size: '5 mg', price: 44.99 }, { size: '10 mg', price: 79.99 }] },
-  'ghk-cu': { price: 34.99, sizes: [{ size: '25 mg', price: 34.99 }, { size: '50 mg', price: 59.99 }] },
-  'mots-c': { price: 69.99, sizes: [{ size: '10 mg', price: 69.99 }, { size: '20 mg', price: 119.99 }] },
-  'ss-31': { price: 79.99, sizes: [{ size: '10 mg', price: 79.99 }, { size: '20 mg', price: 139.99 }] },
-  'tesamorelin': { price: 69.99, sizes: [{ size: '5 mg', price: 69.99 }, { size: '10 mg', price: 119.99 }] },
-  'sermorelin': { price: 49.99, sizes: [{ size: '5 mg', price: 49.99 }, { size: '10 mg', price: 89.99 }] },
-  'melanotan-2': { price: 34.99, sizes: [{ size: '10 mg', price: 34.99 }, { size: '20 mg', price: 59.99 }] },
-  'pt-141': { price: 44.99, sizes: [{ size: '10 mg', price: 44.99 }, { size: '20 mg', price: 79.99 }] },
-  'ghrp-2': { price: 39.99, sizes: [{ size: '5 mg', price: 39.99 }, { size: '10 mg', price: 69.99 }] },
-  'ghrp-6': { price: 39.99, sizes: [{ size: '5 mg', price: 39.99 }, { size: '10 mg', price: 69.99 }] },
-  'oxytocin': { price: 29.99, sizes: [{ size: '10 IU', price: 29.99 }, { size: '20 IU', price: 49.99 }] },
-  'nad-plus': { price: 89.99, sizes: [{ size: '100 mg', price: 89.99 }, { size: '250 mg', price: 189.99 }] },
-  'thymosin-alpha-1': { price: 59.99, sizes: [{ size: '5 mg', price: 59.99 }, { size: '10 mg', price: 99.99 }] },
-  'kpv': { price: 34.99, sizes: [{ size: '25 mg', price: 34.99 }, { size: '50 mg', price: 59.99 }] },
-  'bpc-157-oral': { price: 49.99, sizes: [{ size: '30 caps', price: 49.99 }, { size: '60 caps', price: 89.99 }] },
-};
+const CATEGORIES = ['All', 'Recovery', 'Metabolic', 'Growth Hormone', 'Cosmetic', 'Mitochondrial', 'Wellness', 'Longevity', 'Immune', 'Anti-inflammatory'];
 
 export default function Products() {
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+  const [addedMsg, setAddedMsg] = useState('');
+  const { addItem } = useCart();
 
-  const filteredPeptides = useMemo(() => {
-    return peptides.filter(p => {
-      const matchesCategory = categoryFilter === 'All' || p.category === categoryFilter;
-      const matchesSearch = searchTerm === '' || 
-        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.fullName.toLowerCase().includes(searchTerm.toLowerCase());
-      return matchesCategory && matchesSearch;
+  const productsList = useMemo(() => getProducts(), []);
+  const discount = getDiscount();
+  const siteWide = discount.siteWide || 0;
+
+  const filtered = useMemo(() => {
+    return productsList.filter(p => {
+      const mCat = categoryFilter === 'All' || p.category === categoryFilter;
+      const mSearch = !searchTerm || p.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return mCat && mSearch;
     });
-  }, [categoryFilter, searchTerm]);
+  }, [categoryFilter, searchTerm, productsList]);
+
+  const getEffectivePrice = (product) => {
+    const prodDisc = discount.products?.[product.id] || 0;
+    const maxDisc = Math.max(siteWide, prodDisc);
+    return maxDisc > 0 ? +(product.price * (1 - maxDisc / 100)).toFixed(2) : product.price;
+  };
+
+  const handleAddToCart = (product) => {
+    addItem(product);
+    setAddedMsg(`${product.name} added to cart!`);
+    setTimeout(() => setAddedMsg(''), 2500);
+  };
+
+  const handleBuyNow = (product) => {
+    if (product.stripeUrl) {
+      window.open(product.stripeUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Research Peptide Catalog
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Lab-tested research peptides at wholesale pricing. All products are for research purposes only.
-          </p>
+      {/* Toast */}
+      {addedMsg && (
+        <div className="fixed top-20 right-4 z-50 bg-green-50 border border-green-200 text-green-700 px-4 py-2.5 rounded-xl shadow-lg text-sm font-medium">
+          ✅ {addedMsg}
         </div>
+      )}
 
-        {/* Search & Filter */}
-        <div className="card mb-8">
+      {/* Hero */}
+      <div className="bg-gradient-to-br from-white via-brand-50/30 to-ocean-50/30 pt-12 pb-16 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-500/3 rounded-full blur-3xl" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-sm font-medium mb-4 border border-brand-200">
+              🧪 Wholesale Research Peptides
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Research Peptide Catalog</h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Lab-tested research peptides at wholesale pricing. All products are for research purposes only.
+            </p>
+            {siteWide > 0 && (
+              <div className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-red-50 border border-red-200 rounded-full text-red-700 font-medium text-sm">
+                <span>🔥</span>
+                <span>{siteWide}% OFF SITE-WIDE — Use code: VITALDEAL</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Search & Filter */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
+        <div className="card shadow-md mb-8">
           <div className="flex flex-col sm:flex-row gap-4">
             <input
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
+              type="text" placeholder="Search products..." value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
               className="input-field flex-1"
             />
           </div>
           <div className="flex flex-wrap gap-2 mt-4">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                onClick={() => setCategoryFilter(cat)}
+            {CATEGORIES.map(cat => (
+              <button key={cat} onClick={() => setCategoryFilter(cat)}
                 className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                  categoryFilter === cat
-                    ? 'bg-brand-500 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-              >
-                {cat}
+                  categoryFilter === cat ? 'bg-brand-500 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}>{cat}
               </button>
             ))}
           </div>
@@ -83,52 +93,71 @@ export default function Products() {
 
         {/* Product Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredPeptides.map(p => {
-            const pricing = placeholderPricing[p.id];
-            if (!pricing) return null;
+          {filtered.map(p => {
+            const effPrice = getEffectivePrice(p);
+            const prodDisc = discount.products?.[p.id] || 0;
+            const maxDisc = Math.max(siteWide, prodDisc);
             return (
-              <div key={p.id} className="card flex flex-col">
+              <div key={p.id} className="card-premium flex flex-col group">
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{p.name}</h3>
-                    <p className="text-xs text-gray-500">{p.category}</p>
+                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">{p.name}</h3>
+                    <p className="text-xs text-gray-500">{p.size} · {p.category}</p>
                   </div>
-                  <span className="px-2 py-0.5 bg-brand-50 text-brand-600 text-xs font-medium rounded-full">
-                    In Stock
+                  <span className={`px-2 py-0.5 text-xs font-medium rounded-full border ${
+                    p.inStock ? 'bg-green-50 text-green-600 border-green-200' : 'bg-red-50 text-red-500 border-red-200'
+                  }`}>
+                    {p.inStock ? 'In Stock' : 'Out of Stock'}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600 mb-4 flex-1">{p.description}</p>
-                <div className="space-y-2 mb-4">
-                  {pricing.sizes.map((s, i) => (
-                    <div key={i} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
-                      <span className="text-sm text-gray-700">{s.size}</span>
-                      <span className="text-sm font-bold text-gray-900">${s.price.toFixed(2)}</span>
-                    </div>
-                  ))}
+
+                <div className="mb-4 flex-1">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl font-bold text-gray-900">${effPrice.toFixed(2)}</span>
+                    {maxDisc > 0 && (
+                      <>
+                        <span className="text-sm text-gray-400 line-through">${p.price.toFixed(2)}</span>
+                        <span className="text-xs font-medium text-red-500">-{maxDisc}%</span>
+                      </>
+                    )}
+                  </div>
                 </div>
-                <button className="btn-primary w-full text-sm">
-                  Add to Cart
-                </button>
+
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleAddToCart(p)}
+                    className={`flex-1 py-2.5 rounded-lg font-semibold text-sm transition-all ${
+                      p.inStock
+                        ? 'bg-brand-500 text-white hover:bg-brand-600 shadow-sm hover:shadow-md'
+                        : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                    }`}
+                    disabled={!p.inStock}
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    onClick={() => handleBuyNow(p)}
+                    className={`px-4 py-2.5 rounded-lg font-semibold text-sm transition-all ${
+                      p.inStock
+                        ? 'bg-ocean-500 text-white hover:bg-ocean-600 shadow-sm hover:shadow-md'
+                        : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                    }`}
+                    disabled={!p.inStock}
+                  >
+                    Buy Now
+                  </button>
+                </div>
               </div>
             );
           })}
         </div>
 
-        {filteredPeptides.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500">No products match your search.</p>
+        {filtered.length === 0 && (
+          <div className="text-center py-16">
+            <div className="text-4xl mb-4">🔍</div>
+            <p className="text-gray-500">No products found.</p>
           </div>
         )}
-
-        {/* Wholesale Note */}
-        <div className="mt-12 bg-gradient-to-r from-brand-50 to-ocean-50 rounded-xl p-8 text-center">
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">Wholesale Pricing for Researchers</h3>
-          <p className="text-gray-600 mb-4 max-w-xl mx-auto">
-            All prices shown are wholesale. Volume discounts available for bulk orders. 
-            Contact us for custom quotes.
-          </p>
-          <button className="btn-outline">Request Bulk Quote</button>
-        </div>
       </div>
     </div>
   );

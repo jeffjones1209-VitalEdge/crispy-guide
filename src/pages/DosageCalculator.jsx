@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { peptides, categories, calculateDosage, estimateRunOut } from '../data/peptides';
+import SyringeIndicator from '../components/SyringeIndicator';
 
 export default function DosageCalculator() {
   const [selectedPeptide, setSelectedPeptide] = useState('');
@@ -228,7 +229,7 @@ export default function DosageCalculator() {
             {results && (
               <div className="card border-2 border-brand-200 bg-gradient-to-br from-white to-brand-50">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">📊 Results</h2>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid md:grid-cols-3 gap-6 items-start">
                   <div className="bg-white rounded-lg p-4 text-center border border-brand-100">
                     <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Concentration</p>
                     <p className="text-2xl font-bold text-brand-600">{results.concentration}</p>
@@ -241,8 +242,7 @@ export default function DosageCalculator() {
                   </div>
                   <div className="bg-white rounded-lg p-4 text-center border border-brand-100 ring-2 ring-brand-300">
                     <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Insulin Syringe</p>
-                    <p className="text-2xl font-bold text-brand-600">{results.doseUnits}</p>
-                    <p className="text-xs text-gray-500">units (100-unit/1ml)</p>
+                    <SyringeIndicator units={results.doseUnits} maxUnits={100} />
                   </div>
                 </div>
                 <div className="mt-4 bg-brand-50 rounded-lg p-3 text-sm text-brand-800">
