@@ -1,0 +1,44 @@
+{
+  "SEMA": {
+    "5mg": "price_1U2HK9DQ2cuOrZVIv8uOSdHN",
+    "10mg": "price_1U2HK9DQ2cuOrZVIy7m7DygX",
+    "15mg": "price_1U2HK9DQ2cuOrZVIZHeHLPbN",
+    "20mg": "price_1U2HK9DQ2cuOrZVIxM4IfK1c",
+    "30mg": "price_1U2HK9DQ2cuOrZVIVogbl2G9"
+  },
+  "TZP": {
+    "5mg": "price_1U2HVKDQ2cuOrZVIz3hDmTU9",
+    "10mg": "price_1U2HVKDQ2cuOrZVIBcIHf1jL",
+    "15mg": "price_1U2HVKDQ2cuOrZVIknp9kLFD",
+    "20mg": "price_1U2HVLDQ2cuOrZVI5mpVr2CF",
+    "30mg": "price_1U2HVLDQ2cuOrZVIzEOluSEm",
+    "40mg": "price_1U2HVhDQ2cuOrZVIS5VUD33m"
+  },
+  "RTA": {
+    "5mg": "price_1U2HVhDQ2cuOrZVIeoHDBKBk",
+    "10mg": "price_1U2HVhDQ2cuOrZVIzQqhpqBv",
+    "15mg": "price_1U2HVhDQ2cuOrZVI0inH6cOt",
+    "20mg": "price_1U2HVhDQ2cuOrZVIBg0ObLBS",
+    "30mg": "price_1U2HW4DQ2cuOrZVIbW66hkOq"
+  },
+  "BPC-157": {
+    "5mg": "price_1U2HWNDQ2cuOrZVIniDqcak7",
+    "10mg": "price_1U2HWNDQ2cuOrZVIuUs9yBAX"
+  },
+  "TB-500": {
+    "5mg": "price_1U2HW4DQ2cuOrZVI0ceV8yyY",
+    "10mg": "price_1U2HW4DQ2cuOrZVISg0dLdrb"
+  },
+  "GHK-Cu": {
+    "50mg": "price_1TjVWTDQ2cuOrZVI50ZVkzmf"
+  },
+  "NAD+": {
+    "500mg": "price_1U2HWNDQ2cuOrZVIQ0CeUduk"
+  },
+  "Selank": {
+    "10mg": "price_1U2HW4DQ2cuOrZVIqVOn5UHV"
+  },
+  "Semax": {
+    "10mg": "price_1U2HW4DQ2cuOrZVIj9Iuj7TO"
+  }
+}
