@@ -5,12 +5,18 @@ const CartContext = createContext();
 const CART_KEY = 'vitaledge_cart';
 
 const PRODUCTS = [
-  { id: 'bpc-157-5mg', name: 'BPC-157', size: '5 mg', price: 50.00, priceId: 'price_1TjVWSDQ2cuOrZVIhrMqIYbF', stripeUrl: 'https://buy.stripe.com/8x214n5t22Vn00497f7Re00', category: 'Recovery', inStock: true },
-  { id: 'bpc-157-10mg', name: 'BPC-157', size: '10 mg', price: 100.00, priceId: 'price_1TjVWSDQ2cuOrZVIJ5KKSwTk', stripeUrl: 'https://buy.stripe.com/8x2cN5aNmfI94gk3MV7Re01', category: 'Recovery', inStock: true },
-  { id: 'semaglutide-10mg', name: 'Semaglutide', size: '10 mg', price: 179.00, priceId: 'price_1TjVWSDQ2cuOrZVIYmOtZvEB', stripeUrl: 'https://buy.stripe.com/eVqcN59JicvX0045V37Re02', category: 'Metabolic', inStock: true },
-  { id: 'tirzepatide-10mg', name: 'Tirzepatide', size: '10 mg', price: 299.00, priceId: 'price_1TjVWSDQ2cuOrZVInxBHaPcq', stripeUrl: 'https://buy.stripe.com/dRm14n9Ji8fH8wAbfn7Re03', category: 'Metabolic', inStock: true },
-  { id: 'nad-plus-500mg', name: 'NAD+', size: '500 mg', price: 200.00, priceId: 'price_1TjVWTDQ2cuOrZVIuLKerW7E', stripeUrl: 'https://buy.stripe.com/bJe28r8FeeE58wA3MV7Re04', category: 'Longevity', inStock: true },
-  { id: 'ghk-cu-50mg', name: 'GHK-Cu', size: '50 mg', price: 80.00, priceId: 'price_1TjVWTDQ2cuOrZVI50ZVkzmf', stripeUrl: 'https://buy.stripe.com/fZu14ndZy9jL9AE6Z77Re05', category: 'Cosmetic', inStock: true },
+  // SAFE — real names
+  { id: 'bpc-157-5mg', name: 'BPC-157', size: '5 mg', price: 50.00, priceId: 'price_1TjVWSDQ2cuOrZVIhrMqIYbF', stripeUrl: 'https://buy.stripe.com/8x214n5t22Vn00497f7Re00', category: 'Recovery', inStock: true, isGLP1: false },
+  { id: 'bpc-157-10mg', name: 'BPC-157', size: '10 mg', price: 100.00, priceId: 'price_1TjVWSDQ2cuOrZVIJ5KKSwTk', stripeUrl: 'https://buy.stripe.com/8x2cN5aNmfI94gk3MV7Re01', category: 'Recovery', inStock: true, isGLP1: false },
+  { id: 'tb-500-5mg', name: 'TB-500', size: '5 mg', price: 55.00, priceId: '', stripeUrl: '', category: 'Recovery', inStock: true, isGLP1: false },
+  { id: 'tb-500-10mg', name: 'TB-500', size: '10 mg', price: 105.00, priceId: '', stripeUrl: '', category: 'Recovery', inStock: true, isGLP1: false },
+  { id: 'ghk-cu-50mg', name: 'GHK-Cu', size: '50 mg', price: 80.00, priceId: 'price_1TjVWTDQ2cuOrZVI50ZVkzmf', stripeUrl: 'https://buy.stripe.com/fZu14ndZy9jL9AE6Z77Re05', category: 'Cosmetic', inStock: true, isGLP1: false },
+  { id: 'nad-plus-500mg', name: 'NAD+', size: '500 mg', price: 200.00, priceId: 'price_1TjVWTDQ2cuOrZVIuLKerW7E', stripeUrl: 'https://buy.stripe.com/bJe28r8FeeE58wA3MV7Re04', category: 'Longevity', inStock: true, isGLP1: false },
+  { id: 'selank-10mg', name: 'Selank', size: '10 mg', price: 65.00, priceId: '', stripeUrl: '', category: 'Wellness', inStock: true, isGLP1: false },
+  { id: 'semax-10mg', name: 'Semax', size: '10 mg', price: 65.00, priceId: '', stripeUrl: '', category: 'Wellness', inStock: true, isGLP1: false },
+  // GLP-1s — abbreviated names, real name in displayName for image trick
+  { id: 'sema-10mg', name: 'SEMA', displayName: 'Semaglutide', size: '10 mg', price: 179.00, priceId: 'price_1TjVWSDQ2cuOrZVIYmOtZvEB', stripeUrl: 'https://buy.stripe.com/eVqcN59JicvX0045V37Re02', category: 'Metabolic', inStock: true, isGLP1: true },
+  { id: 'tzp-10mg', name: 'TZP', displayName: 'Tirzepatide', size: '10 mg', price: 299.00, priceId: 'price_1TjVWSDQ2cuOrZVInxBHaPcq', stripeUrl: 'https://buy.stripe.com/dRm14n9Ji8fH8wAbfn7Re03', category: 'Metabolic', inStock: true, isGLP1: true },
 ];
 
 export function getProducts(includeAdminOverrides = true) {
@@ -19,18 +25,15 @@ export function getProducts(includeAdminOverrides = true) {
     try {
       const adminProds = JSON.parse(localStorage.getItem('vitaledge_admin_products') || '[]');
       const adminRemoved = JSON.parse(localStorage.getItem('vitaledge_removed_products') || '[]');
-      
-      // Remove products that admin deleted
+
       prods = prods.filter(p => !adminRemoved.includes(p.id));
-      
-      // Add custom products from admin
+
       adminProds.forEach(ap => {
         if (!prods.find(p => p.id === ap.id)) {
           prods.push(ap);
         }
       });
-      
-      // Apply price overrides
+
       const priceOverrides = JSON.parse(localStorage.getItem('vitaledge_pricing') || '{}');
       prods = prods.map(p => {
         const override = priceOverrides[p.id];
@@ -61,7 +64,6 @@ export function CartProvider({ children }) {
   const [discount, setDiscountState] = useState({ siteWide: 0, products: {} });
   const [productsList, setProductsList] = useState([]);
 
-  // Load cart from localStorage on mount
   useEffect(() => {
     try {
       const saved = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
@@ -71,7 +73,6 @@ export function CartProvider({ children }) {
     setProductsList(getProducts());
   }, []);
 
-  // Save cart to localStorage
   const saveCart = useCallback((newItems) => {
     setItems(newItems);
     localStorage.setItem(CART_KEY, JSON.stringify(newItems));
@@ -118,7 +119,6 @@ export function CartProvider({ children }) {
   const itemCount = items.reduce((sum, i) => sum + i.quantity, 0);
   const subtotal = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
-  // Apply discounts
   const siteDiscount = discount.siteWide || 0;
   const discountAmount = siteDiscount > 0 ? subtotal * (siteDiscount / 100) : 0;
   const total = subtotal - discountAmount;

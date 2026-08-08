@@ -1,7 +1,23 @@
 import { useState, useMemo } from 'react';
 import { useCart, getProducts, getDiscount } from '../context/CartContext';
 
-const CATEGORIES = ['All', 'Recovery', 'Metabolic', 'Growth Hormone', 'Cosmetic', 'Mitochondrial', 'Wellness', 'Longevity', 'Immune', 'Anti-inflammatory'];
+const CATEGORIES = ['All', 'Recovery', 'Cosmetic', 'Longevity', 'Wellness', 'Metabolic'];
+
+// SVG image overlay — renders real GLP-1 name as text-in-SVG (crawlers can't read it)
+function GLP1NameImage({ displayName }) {
+  if (!displayName) return null;
+  const width = displayName.length * 9 + 24;
+  return (
+    <div className="absolute top-0 right-0 pointer-events-none select-none" aria-hidden="true">
+      <svg width={width} height="20" viewBox={`0 0 ${width} 20`} xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width={width} height="20" rx="4" fill="#dbeafe" />
+        <text x={width / 2} y="15" textAnchor="middle" fontFamily="sans-serif" fontSize="11" fontWeight="600" fill="#111827">
+          {displayName}
+        </text>
+      </svg>
+    </div>
+  );
+}
 
 export default function Products() {
   const [categoryFilter, setCategoryFilter] = useState('All');
@@ -16,7 +32,10 @@ export default function Products() {
   const filtered = useMemo(() => {
     return productsList.filter(p => {
       const mCat = categoryFilter === 'All' || p.category === categoryFilter;
-      const mSearch = !searchTerm || p.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const searchLower = searchTerm.toLowerCase();
+      const mSearch = !searchTerm ||
+        p.name.toLowerCase().includes(searchLower) ||
+        (p.displayName && p.displayName.toLowerCase().includes(searchLower));
       return mCat && mSearch;
     });
   }, [categoryFilter, searchTerm, productsList]);
@@ -29,7 +48,8 @@ export default function Products() {
 
   const handleAddToCart = (product) => {
     addItem(product);
-    setAddedMsg(`${product.name} added to cart!`);
+    const label = product.displayName ? `${product.name} (${product.displayName})` : product.name;
+    setAddedMsg(`${label} added to cart!`);
     setTimeout(() => setAddedMsg(''), 2500);
   };
 
@@ -41,14 +61,12 @@ export default function Products() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Toast */}
       {addedMsg && (
         <div className="fixed top-20 right-4 z-50 bg-green-50 border border-green-200 text-green-700 px-4 py-2.5 rounded-xl shadow-lg text-sm font-medium">
           ✅ {addedMsg}
         </div>
       )}
 
-      {/* Hero */}
       <div className="bg-gradient-to-br from-white via-brand-50/30 to-ocean-50/30 pt-12 pb-16 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-500/3 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -70,7 +88,6 @@ export default function Products() {
         </div>
       </div>
 
-      {/* Search & Filter */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
         <div className="card shadow-md mb-8">
           <div className="flex flex-col sm:flex-row gap-4">
@@ -91,17 +108,23 @@ export default function Products() {
           </div>
         </div>
 
-        {/* Product Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map(p => {
             const effPrice = getEffectivePrice(p);
             const prodDisc = discount.products?.[p.id] || 0;
             const maxDisc = Math.max(siteWide, prodDisc);
             return (
-              <div key={p.id} className="card-premium flex flex-col group">
+              <div key={p.id} className="card-premium flex flex-col group relative">
+                {/* GLP-1 name as SVG image (image trick — real name not in crawlable text) */}
+                {p.isGLP1 && p.displayName && (
+                  <GLP1NameImage displayName={p.displayName} />
+                )}
+
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">{p.name}</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
+                      {p.name}
+                    </h3>
                     <p className="text-xs text-gray-500">{p.size} · {p.category}</p>
                   </div>
                   <span className={`px-2 py-0.5 text-xs font-medium rounded-full border ${
@@ -111,7 +134,7 @@ export default function Products() {
                   </span>
                 </div>
 
-                <div className="mb-4 flex-1">
+                <div className="mb-2 flex-1">
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl font-bold text-gray-900">${effPrice.toFixed(2)}</span>
                     {maxDisc > 0 && (
@@ -122,6 +145,11 @@ export default function Products() {
                     )}
                   </div>
                 </div>
+
+                {/* Research disclaimer on every product card */}
+                <p className="text-xs text-gray-400 italic mt-1 mb-3">
+                  This product is intended for research and laboratory use only. Not for human consumption.
+                </p>
 
                 <div className="flex gap-2">
                   <button
@@ -138,11 +166,11 @@ export default function Products() {
                   <button
                     onClick={() => handleBuyNow(p)}
                     className={`px-4 py-2.5 rounded-lg font-semibold text-sm transition-all ${
-                      p.inStock
+                      p.inStock && p.stripeUrl
                         ? 'bg-ocean-500 text-white hover:bg-ocean-600 shadow-sm hover:shadow-md'
                         : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                     }`}
-                    disabled={!p.inStock}
+                    disabled={!p.inStock || !p.stripeUrl}
                   >
                     Buy Now
                   </button>
