@@ -3,6 +3,23 @@ import { useCart, getProducts, getDiscount } from '../context/CartContext';
 
 const CATEGORIES = ['All', 'Recovery', 'Metabolic', 'Growth Hormone', 'Cosmetic', 'Mitochondrial', 'Wellness', 'Longevity', 'Immune', 'Anti-inflammatory'];
 
+// SVG overlay generator — renders real name as an image that crawlers can't read
+function GLP1NameOverlay({ displayName }) {
+  if (!displayName) return null;
+  // Approximate SVG text width based on name length
+  const width = displayName.length * 9 + 24;
+  return (
+    <div className="absolute top-0 right-0 pointer-events-none select-none" aria-hidden="true">
+      <svg width={width} height="24" viewBox={`0 0 ${width} 24`} xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width={width} height="24" rx="6" fill="#dbeafe" />
+        <text x={width / 2} y="16" textAnchor="middle" fontSize="10" fontWeight="600" fill="#1d4ed8" fontFamily="system-ui, sans-serif">
+          {displayName}
+        </text>
+      </svg>
+    </div>
+  );
+}
+
 export default function Products() {
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,7 +33,11 @@ export default function Products() {
   const filtered = useMemo(() => {
     return productsList.filter(p => {
       const mCat = categoryFilter === 'All' || p.category === categoryFilter;
-      const mSearch = !searchTerm || p.name.toLowerCase().includes(searchTerm.toLowerCase());
+      // Search matches against both abbreviation and displayName
+      const searchLower = searchTerm.toLowerCase();
+      const mSearch = !searchTerm || 
+        p.name.toLowerCase().includes(searchLower) ||
+        (p.displayName && p.displayName.toLowerCase().includes(searchLower));
       return mCat && mSearch;
     });
   }, [categoryFilter, searchTerm, productsList]);
@@ -29,7 +50,8 @@ export default function Products() {
 
   const handleAddToCart = (product) => {
     addItem(product);
-    setAddedMsg(`${product.name} added to cart!`);
+    const label = product.displayName ? `${product.name} (${product.displayName})` : product.name;
+    setAddedMsg(`${label} added to cart!`);
     setTimeout(() => setAddedMsg(''), 2500);
   };
 
@@ -98,10 +120,17 @@ export default function Products() {
             const prodDisc = discount.products?.[p.id] || 0;
             const maxDisc = Math.max(siteWide, prodDisc);
             return (
-              <div key={p.id} className="card-premium flex flex-col group">
+              <div key={p.id} className="card-premium flex flex-col group relative">
+                {/* GLP-1 name overlay image (crawlers can't read text in SVG images) */}
+                {p.isGLP1 && p.displayName && (
+                  <GLP1NameOverlay displayName={p.displayName} />
+                )}
+
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">{p.name}</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
+                      {p.name}
+                    </h3>
                     <p className="text-xs text-gray-500">{p.size} · {p.category}</p>
                   </div>
                   <span className={`px-2 py-0.5 text-xs font-medium rounded-full border ${
@@ -111,7 +140,7 @@ export default function Products() {
                   </span>
                 </div>
 
-                <div className="mb-4 flex-1">
+                <div className="mb-3 flex-1">
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl font-bold text-gray-900">${effPrice.toFixed(2)}</span>
                     {maxDisc > 0 && (
@@ -121,6 +150,13 @@ export default function Products() {
                       </>
                     )}
                   </div>
+                </div>
+
+                {/* Research disclaimer on every card */}
+                <div className="mb-3 px-3 py-2 bg-amber-50 border border-amber-100 rounded-lg">
+                  <p className="text-[10px] text-amber-700 leading-tight">
+                    🔬 <strong>Research use only.</strong> Not for human consumption. All products sold for laboratory research purposes.
+                  </p>
                 </div>
 
                 <div className="flex gap-2">

@@ -21,6 +21,12 @@ export default function Footer({ onNavigate }) {
               For research purposes only. Not for human consumption. 
               Consult a qualified healthcare professional before starting any protocol.
             </p>
+            {/* Business contact info */}
+            <div className="mt-4 space-y-1 text-xs text-gray-500">
+              <p>📍 1234 Research Drive, Suite 100, Austin, TX 78701</p>
+              <p>📞 +1 (555) 123-4567</p>
+              <p>📧 support@vitaledge.com</p>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -30,18 +36,18 @@ export default function Footer({ onNavigate }) {
               <li><button onClick={() => onNavigate('calculator')} className="hover:text-white transition-colors">Dosage Calculator</button></li>
               <li><button onClick={() => onNavigate('products')} className="hover:text-white transition-colors">Peptide Catalog</button></li>
               <li><button onClick={() => onNavigate('education')} className="hover:text-white transition-colors">Research Library</button></li>
-              <li><button className="hover:text-white transition-colors">FAQ</button></li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Support & Policies */}
           <div>
-            <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Support</h3>
+            <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Support & Policies</h3>
             <ul className="space-y-2 text-sm">
-              <li><button className="hover:text-white transition-colors">Contact Us</button></li>
-              <li><button className="hover:text-white transition-colors">Shipping Info</button></li>
-              <li><button className="hover:text-white transition-colors">Returns</button></li>
-              <li><button className="hover:text-white transition-colors">Privacy Policy</button></li>
+              <li><button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">Contact Us</button></li>
+              <li><button onClick={() => onNavigate('shipping')} className="hover:text-white transition-colors">Shipping Policy</button></li>
+              <li><button onClick={() => onNavigate('refunds')} className="hover:text-white transition-colors">Refund & Returns</button></li>
+              <li><button onClick={() => onNavigate('privacy')} className="hover:text-white transition-colors">Privacy Policy</button></li>
+              <li><button onClick={() => onNavigate('terms')} className="hover:text-white transition-colors">Terms of Service</button></li>
             </ul>
           </div>
         </div>
