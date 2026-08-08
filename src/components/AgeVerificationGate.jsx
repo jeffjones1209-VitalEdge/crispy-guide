@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const STORAGE_KEY = 'vitaledge_age_verified';
+const STORAGE_KEY = 'vitaledge_age_verified_v2';
 const EXPIRY_DAYS = 30;
 
 export default function AgeVerificationGate() {
   const [visible, setVisible] = useState(false);
+  const [researchChecked, setResearchChecked] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -23,7 +24,18 @@ export default function AgeVerificationGate() {
     setVisible(true);
   }, []);
 
+  // Lock body scroll when gate is visible
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [visible]);
+
   const handleYes = () => {
+    if (!researchChecked) return;
     localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({ verified: true, timestamp: Date.now() })
@@ -52,17 +64,25 @@ export default function AgeVerificationGate() {
           Welcome to VItalEdge
         </h2>
 
-        <p className="text-gray-600 mb-8 leading-relaxed">
-          Are you <strong className="text-gray-900">18 years of age</strong> or older?
+        <p className="text-gray-600 mb-6 leading-relaxed">
+          Are you <strong className="text-gray-900">21 years of age</strong> or older?
         </p>
 
-        {/* Disclaimer box */}
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 text-xs text-amber-800 leading-relaxed">
-          <strong>🔬 Research Purposes Only</strong>
-          <br />
-          This site provides educational tools and resources for peptide research. 
-          By entering, you confirm you are 18+ and understand this content is 
-          for research purposes only, not for human consumption.
+        {/* Research checkbox */}
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-left">
+          <label className="flex items-start gap-3 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={researchChecked}
+              onChange={(e) => setResearchChecked(e.target.checked)}
+              className="mt-0.5 w-4 h-4 rounded border-amber-300 text-brand-600 focus:ring-brand-500 accent-brand-600"
+            />
+            <span className="text-xs text-amber-800 leading-relaxed">
+              <strong>🔬 Research Purposes Only</strong>
+              <br />
+              I confirm I am a researcher and understand these products are for laboratory research purposes only, not for human consumption.
+            </span>
+          </label>
         </div>
 
         {/* Buttons */}
@@ -71,13 +91,18 @@ export default function AgeVerificationGate() {
             onClick={handleNo}
             className="flex-1 py-3 px-6 rounded-xl border-2 border-gray-200 text-gray-600 font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all"
           >
-            No, I'm Under 18
+            No, I'm Under 21
           </button>
           <button
             onClick={handleYes}
-            className="flex-1 py-3 px-6 rounded-xl bg-gradient-to-r from-brand-500 to-ocean-500 text-white font-semibold shadow-md hover:shadow-lg hover:from-brand-600 hover:to-ocean-600 transition-all"
+            disabled={!researchChecked}
+            className={`flex-1 py-3 px-6 rounded-xl text-white font-semibold shadow-md transition-all ${
+              researchChecked
+                ? 'bg-gradient-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 hover:shadow-lg cursor-pointer'
+                : 'bg-gray-300 cursor-not-allowed'
+            }`}
           >
-            Yes, I'm 18+
+            Yes, I'm 21+
           </button>
         </div>
 
