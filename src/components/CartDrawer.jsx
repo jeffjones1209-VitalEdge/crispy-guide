@@ -10,11 +10,13 @@ export default function CartDrawer({ open, onClose }) {
   const [showResearchGate, setShowResearchGate] = useState(false);
 
   const handleBuyNow = (item) => {
+    // Stripe payment link is for 1 unit — customer adjusts qty at Stripe checkout
     window.open(item.stripeUrl + '?quantity=' + item.quantity, '_blank', 'noopener,noreferrer');
   };
 
   const handleCheckoutAll = () => {
     if (items.length === 0) return;
+    // Stripe handles quantity at checkout. Open each unique item's link.
     items.forEach(item => {
       window.open(item.stripeUrl + '?quantity=' + item.quantity, '_blank', 'noopener,noreferrer');
     });
