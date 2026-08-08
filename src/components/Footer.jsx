@@ -19,8 +19,11 @@ export default function Footer({ onNavigate }) {
             </p>
             <p className="text-xs mt-4 text-gray-500">
               For research purposes only. Not for human consumption. 
-              Consult a qualified healthcare professional before starting any protocol.
             </p>
+            <div className="mt-4 space-y-1 text-xs text-gray-500">
+              <p>📞 Phone: See Contact page</p>
+              <p>📍 Business Address: Available upon request — see Contact page</p>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -30,18 +33,18 @@ export default function Footer({ onNavigate }) {
               <li><button onClick={() => onNavigate('calculator')} className="hover:text-white transition-colors">Dosage Calculator</button></li>
               <li><button onClick={() => onNavigate('products')} className="hover:text-white transition-colors">Peptide Catalog</button></li>
               <li><button onClick={() => onNavigate('education')} className="hover:text-white transition-colors">Research Library</button></li>
-              <li><button className="hover:text-white transition-colors">FAQ</button></li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Support & Policies */}
           <div>
-            <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Support</h3>
+            <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Support & Policies</h3>
             <ul className="space-y-2 text-sm">
-              <li><button className="hover:text-white transition-colors">Contact Us</button></li>
-              <li><button className="hover:text-white transition-colors">Shipping Info</button></li>
-              <li><button className="hover:text-white transition-colors">Returns</button></li>
-              <li><button className="hover:text-white transition-colors">Privacy Policy</button></li>
+              <li><button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">Contact Us</button></li>
+              <li><button onClick={() => onNavigate('shipping')} className="hover:text-white transition-colors">Shipping Info</button></li>
+              <li><button onClick={() => onNavigate('refunds')} className="hover:text-white transition-colors">Returns</button></li>
+              <li><button onClick={() => onNavigate('privacy')} className="hover:text-white transition-colors">Privacy Policy</button></li>
+              <li><button onClick={() => onNavigate('terms')} className="hover:text-white transition-colors">Terms of Service</button></li>
             </ul>
           </div>
         </div>
@@ -50,7 +53,6 @@ export default function Footer({ onNavigate }) {
           <p>&copy; {new Date().getFullYear()} VItalEdge. All rights reserved.</p>
           <p className="mt-2 sm:mt-0 flex items-center gap-4">
             <span>Made for the research community.</span>
-            {/* Hidden admin link — only visible to those who know */}
             <button
               onClick={() => onNavigate('admin')}
               className="text-gray-700 hover:text-gray-500 transition-colors select-none"
