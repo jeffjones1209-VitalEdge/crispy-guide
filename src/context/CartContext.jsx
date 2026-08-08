@@ -5,6 +5,12 @@ const CartContext = createContext();
 const CART_KEY = 'vitaledge_cart';
 
 const PRODUCTS = [
+  { id: 'bpc-157-5mg', name: 'BPC-157', size: '5 mg', price: 50.00, priceId: 'price_1TjVWSDQ2cuOrZVIhrMqIYbF', stripeUrl: 'https://buy.stripe.com/8x214n5t22Vn00497f7Re00', category: 'Recovery', inStock: true, isGLP1: false },
+  { id: 'bpc-157-10mg', name: 'BPC-157', size: '10 mg', price: 100.00, priceId: 'price_1TjVWSDQ2cuOrZVIJ5KKSwTk', stripeUrl: 'https://buy.stripe.com/8x2cN5aNmfI94gk3MV7Re01', category: 'Recovery', inStock: true, isGLP1: false },
+  { id: 'sema-10mg', name: 'SEMA', displayName: 'Semaglutide', size: '10 mg', price: 179.00, priceId: 'price_1TjVWSDQ2cuOrZVIYmOtZvEB', stripeUrl: 'https://buy.stripe.com/eVqcN59JicvX0045V37Re02', category: 'Metabolic', inStock: true, isGLP1: true },
+  { id: 'tzp-10mg', name: 'TZP', displayName: 'Tirzepatide', size: '10 mg', price: 299.00, priceId: 'price_1TjVWSDQ2cuOrZVInxBHaPcq', stripeUrl: 'https://buy.stripe.com/dRm14n9Ji8fH8wAbfn7Re03', category: 'Metabolic', inStock: true, isGLP1: true },
+  { id: 'nad-plus-500mg', name: 'NAD+', size: '500 mg', price: 200.00, priceId: 'price_1TjVWTDQ2cuOrZVIuLKerW7E', stripeUrl: 'https://buy.stripe.com/bJe28r8FeeE58wA3MV7Re04', category: 'Longevity', inStock: true, isGLP1: false },
+  { id: 'ghk-cu-50mg', name: 'GHK-Cu', size: '50 mg', price: 80.00, priceId: 'price_1TjVWTDQ2cuOrZVI50ZVkzmf', stripeUrl: 'https://buy.stripe.com/fZu14ndZy9jL9AE6Z77Re05', category: 'Cosmetic', inStock: true, isGLP1: false },
   { id: 'bpc-157-5mg', name: 'BPC-157', size: '5 mg', price: 50.00, priceId: 'price_1TjVWSDQ2cuOrZVIhrMqIYbF', stripeUrl: 'https://buy.stripe.com/8x214n5t22Vn00497f7Re00', category: 'Recovery', inStock: true },
   { id: 'bpc-157-10mg', name: 'BPC-157', size: '10 mg', price: 100.00, priceId: 'price_1TjVWSDQ2cuOrZVIJ5KKSwTk', stripeUrl: 'https://buy.stripe.com/8x2cN5aNmfI94gk3MV7Re01', category: 'Recovery', inStock: true },
   { id: 'semaglutide-10mg', name: 'Semaglutide', size: '10 mg', price: 179.00, priceId: 'price_1TjVWSDQ2cuOrZVIYmOtZvEB', stripeUrl: 'https://buy.stripe.com/eVqcN59JicvX0045V37Re02', category: 'Metabolic', inStock: true },

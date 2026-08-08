@@ -24,7 +24,7 @@ export default function Home({ onNavigate }) {
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto">
               The most comprehensive free peptide dosage calculator. 
-              Research, reconstitute, and schedule with precision — so you never 
+              Research, reconstitute, and calculate with precision — so you never 
               have to guess your units again.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -68,7 +68,7 @@ export default function Home({ onNavigate }) {
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Smart Dosage Calculator</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Instantly convert mg to units/ml for any peptide. Input your reconstitution 
-                and get precise dosing with a <strong className="text-brand-600">visual syringe indicator</strong>.
+                and get precise calculations with a <strong className="text-brand-600">visual syringe indicator</strong>.
               </p>
               <div className="mt-4 pt-4 border-t border-gray-100">
                 <span className="text-xs text-brand-500 font-medium">22+ peptides supported</span>
@@ -83,7 +83,7 @@ export default function Home({ onNavigate }) {
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Scheduling & Reminders</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Set your frequency and get a full schedule. Know exactly when you'll 
-                run out and when to reorder — <strong className="text-ocean-600">never break protocol</strong>.
+                run out and when to reorder — <strong className="text-ocean-600">stay on track</strong>.
               </p>
               <div className="mt-4 pt-4 border-t border-gray-100">
                 <span className="text-xs text-ocean-500 font-medium">Smart run-out predictions</span>
@@ -124,7 +124,7 @@ export default function Home({ onNavigate }) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { name: 'Recovery', icon: '🛡️', desc: 'BPC-157, TB-500' },
-              { name: 'Metabolic', icon: '⚡', desc: 'Semaglutide, Tirzepatide' },
+              { name: 'Metabolic', icon: '⚡', desc: 'SEMA, TZP' },
               { name: 'Growth Hormone', icon: '📈', desc: 'Ipamorelin, CJC-1295' },
               { name: 'Cosmetic', icon: '✨', desc: 'GHK-Cu, Melanotan' },
               { name: 'Mitochondrial', icon: '🔋', desc: 'MOTS-c, SS-31' },
@@ -175,7 +175,7 @@ export default function Home({ onNavigate }) {
             Ready to Dose with Confidence?
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join thousands of researchers using VItalEdge for precise, reliable peptide dosing.
+            VItalEdge provides precise, reliable peptide calculation tools for the research community.
             The tool is free — <strong className="text-brand-600">always</strong>.
           </p>
           <button
