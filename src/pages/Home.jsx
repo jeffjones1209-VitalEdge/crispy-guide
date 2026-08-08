@@ -3,7 +3,6 @@ export default function Home({ onNavigate }) {
     <div>
       {/* Hero Section */}
       <section className="bg-hero-pattern py-20 lg:py-28 relative overflow-hidden">
-        {/* Decorative geometric elements */}
         <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-brand-500/3 blur-3xl" />
         <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-ocean-500/3 blur-3xl" />
         <div className="absolute top-40 right-1/4 w-4 h-4 rounded-full bg-brand-400/20" />
@@ -38,7 +37,7 @@ export default function Home({ onNavigate }) {
                 onClick={() => onNavigate('products')}
                 className="btn-outline text-lg px-8 py-3 bg-white/80 backdrop-blur-sm"
               >
-                Browse Peptides
+                Browse Catalog
               </button>
             </div>
           </div>
@@ -83,7 +82,7 @@ export default function Home({ onNavigate }) {
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Scheduling & Reminders</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Set your frequency and get a full schedule. Know exactly when you'll 
-                run out and when to reorder — <strong className="text-ocean-600">never break protocol</strong>.
+                run out and when to reorder — <strong className="text-ocean-600">never miss a research cycle</strong>.
               </p>
               <div className="mt-4 pt-4 border-t border-gray-100">
                 <span className="text-xs text-ocean-500 font-medium">Smart run-out predictions</span>
@@ -118,19 +117,16 @@ export default function Home({ onNavigate }) {
             </div>
             <h2 className="section-title">Find Your Peptide</h2>
             <p className="section-subtitle mx-auto">
-              From recovery to metabolic health — 22+ research peptides across 8 categories.
+              From recovery to metabolic health — research peptides across key categories.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
               { name: 'Recovery', icon: '🛡️', desc: 'BPC-157, TB-500' },
-              { name: 'Metabolic', icon: '⚡', desc: 'Semaglutide, Tirzepatide' },
-              { name: 'Growth Hormone', icon: '📈', desc: 'Ipamorelin, CJC-1295' },
-              { name: 'Cosmetic', icon: '✨', desc: 'GHK-Cu, Melanotan' },
-              { name: 'Mitochondrial', icon: '🔋', desc: 'MOTS-c, SS-31' },
-              { name: 'Wellness', icon: '🧠', desc: 'PT-141, Oxytocin' },
-              { name: 'Longevity', icon: '⏳', desc: 'NAD+, Tesamorelin' },
-              { name: 'Immune', icon: '💪', desc: 'Thymosin Alpha-1' },
+              { name: 'Cosmetic', icon: '✨', desc: 'GHK-Cu' },
+              { name: 'Longevity', icon: '⏳', desc: 'NAD+' },
+              { name: 'Wellness', icon: '🧠', desc: 'Selank, Semax' },
+              { name: 'Metabolic', icon: '⚡', desc: 'SEMA, TZP' },
             ].map((cat) => (
               <div key={cat.name} className="card-premium text-center py-6 cursor-pointer group" onClick={() => onNavigate('calculator')}>
                 <span className="text-2xl block mb-2">{cat.icon}</span>
@@ -149,7 +145,7 @@ export default function Home({ onNavigate }) {
             {[
               { number: '22+', label: 'Peptides', sub: 'In our database' },
               { number: '100%', label: 'Free Tool', sub: 'No paywall ever' },
-              { number: '8', label: 'Categories', sub: 'Comprehensive' },
+              { number: '5', label: 'Categories', sub: 'Comprehensive' },
               { number: '24/7', label: 'Access', sub: 'Always available' },
             ].map(s => (
               <div key={s.label} className="text-white">
@@ -175,7 +171,7 @@ export default function Home({ onNavigate }) {
             Ready to Dose with Confidence?
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join thousands of researchers using VItalEdge for precise, reliable peptide dosing.
+            Built for the research community. VItalEdge provides precise, reliable peptide calculation tools.
             The tool is free — <strong className="text-brand-600">always</strong>.
           </p>
           <button
