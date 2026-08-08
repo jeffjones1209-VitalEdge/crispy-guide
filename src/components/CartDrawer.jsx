@@ -1,29 +1,44 @@
+import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
+
+const RESEARCHER_EMAIL_KEY = 'vitaledge_researcher_email';
 
 export default function CartDrawer({ open, onClose }) {
   const { items, updateQuantity, removeItem, subtotal, total, discountAmount } = useCart();
 
+  // Research gate state
+  const [researcherEmail, setResearcherEmail] = useState('');
+  const [researchConfirmed, setResearchConfirmed] = useState(false);
+
+  // Pre-fill email from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem(RESEARCHER_EMAIL_KEY);
+    if (saved) setResearcherEmail(saved);
+  }, []);
+
   const handleBuyNow = (item) => {
-    // Stripe payment link is for 1 unit — customer adjusts qty at Stripe checkout
     window.open(item.stripeUrl + '?quantity=' + item.quantity, '_blank', 'noopener,noreferrer');
   };
 
   const handleCheckoutAll = () => {
     if (items.length === 0) return;
-    // Stripe handles quantity at checkout. Open each unique item's link.
+    // Save email for pre-fill next time
+    if (researcherEmail) {
+      localStorage.setItem(RESEARCHER_EMAIL_KEY, researcherEmail);
+    }
     items.forEach(item => {
       window.open(item.stripeUrl + '?quantity=' + item.quantity, '_blank', 'noopener,noreferrer');
     });
   };
 
+  const canCheckout = researcherEmail.trim() !== '' && researchConfirmed;
+
   return (
     <>
-      {/* Backdrop */}
       {open && (
         <div className="fixed inset-0 bg-black/40 z-40 transition-opacity" onClick={onClose} />
       )}
 
-      {/* Drawer */}
       <div className={`fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform transition-transform duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex flex-col h-full">
           {/* Header */}
@@ -90,7 +105,7 @@ export default function CartDrawer({ open, onClose }) {
             )}
           </div>
 
-          {/* Footer */}
+          {/* Footer with Research Gate */}
           {items.length > 0 && (
             <div className="border-t border-gray-100 px-6 py-4 space-y-3">
               <div className="flex justify-between text-sm">
@@ -107,9 +122,52 @@ export default function CartDrawer({ open, onClose }) {
                 <span>Total</span>
                 <span>${total.toFixed(2)}</span>
               </div>
+
+              {/* Research Gate — subtle bordered section above checkout */}
+              <div className="border border-amber-200 bg-amber-50/50 rounded-xl p-4 space-y-3">
+                <p className="text-xs font-medium text-amber-800">
+                  🔬 Research Verification Required
+                </p>
+
+                <div>
+                  <label htmlFor="researchEmail" className="block text-xs font-medium text-gray-700 mb-1">
+                    Research Email
+                  </label>
+                  <input
+                    type="email"
+                    id="researchEmail"
+                    value={researcherEmail}
+                    onChange={(e) => setResearcherEmail(e.target.value)}
+                    placeholder="researcher@institution.edu"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all"
+                  />
+                </div>
+
+                <label className="flex items-start gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={researchConfirmed}
+                    onChange={(e) => setResearchConfirmed(e.target.checked)}
+                    className="mt-0.5 w-4 h-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500 accent-brand-600"
+                  />
+                  <span className="text-xs text-gray-700 leading-relaxed">
+                    I confirm I am a researcher purchasing for laboratory research purposes only. These products are not for human consumption.
+                  </span>
+                </label>
+              </div>
+
+              <p className="text-xs text-gray-400 text-center">
+                By proceeding, you acknowledge all products are for research use only.
+              </p>
+
               <button
                 onClick={handleCheckoutAll}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-brand-500 to-ocean-500 text-white font-semibold hover:from-brand-600 hover:to-ocean-600 transition-all shadow-sm"
+                disabled={!canCheckout}
+                className={`w-full py-3 rounded-xl text-white font-semibold transition-all ${
+                  canCheckout
+                    ? 'bg-gradient-to-r from-brand-500 to-ocean-500 hover:from-brand-600 hover:to-ocean-600 shadow-sm cursor-pointer'
+                    : 'bg-gray-300 cursor-not-allowed'
+                }`}
               >
                 Checkout on Stripe →
               </button>
