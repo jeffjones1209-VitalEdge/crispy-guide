@@ -9,66 +9,66 @@ const PRODUCTS = [
   {
     id: 'sema', name: 'SEMA', displayName: 'Semaglutide', category: 'Metabolic', isGLP1: true, inStock: true,
     variants: [
-      { mg: 5,  prices: { single: 89,  threePack: 214,  tenKit: 668  } },
-      { mg: 10, prices: { single: 189, threePack: 454,  tenKit: 1418 } },
-      { mg: 15, prices: { single: 225, threePack: 540,  tenKit: 1688 } },
-      { mg: 20, prices: { single: 249, threePack: 598,  tenKit: 1868 } },
-      { mg: 30, prices: { single: 310, threePack: 744,  tenKit: 2325 } },
+      { mg: 5,  prices: { single: 89,  threePack: 214,  tenKit: 668  }, priceId: 'price_1U2HK9DQ2cuOrZVIv8uOSdHN' },
+      { mg: 10, prices: { single: 189, threePack: 454,  tenKit: 1418 }, priceId: 'price_1U2HK9DQ2cuOrZVIy7m7DygX' },
+      { mg: 15, prices: { single: 225, threePack: 540,  tenKit: 1688 }, priceId: 'price_1U2HK9DQ2cuOrZVIZHeHLPbN' },
+      { mg: 20, prices: { single: 249, threePack: 598,  tenKit: 1868 }, priceId: 'price_1U2HK9DQ2cuOrZVIxM4IfK1c' },
+      { mg: 30, prices: { single: 310, threePack: 744,  tenKit: 2325 }, priceId: 'price_1U2HK9DQ2cuOrZVIVogbl2G9' },
     ]
   },
   {
     id: 'tzp', name: 'TZP', displayName: 'Tirzepatide', category: 'Metabolic', isGLP1: true, inStock: true,
     variants: [
-      { mg: 5,  prices: { single: 98,  threePack: 235,  tenKit: 735  } },
-      { mg: 10, prices: { single: 310, threePack: 744,  tenKit: 2325 } },
-      { mg: 15, prices: { single: 225, threePack: 540,  tenKit: 1688 } },
-      { mg: 20, prices: { single: 265, threePack: 636,  tenKit: 1988 } },
-      { mg: 30, prices: { single: 310, threePack: 744,  tenKit: 2325 } },
-      { mg: 40, prices: { single: 385, threePack: 924,  tenKit: 2888 } },
+      { mg: 5,  prices: { single: 98,  threePack: 235,  tenKit: 735  }, priceId: 'price_1U2HVKDQ2cuOrZVIz3hDmTU9' },
+      { mg: 10, prices: { single: 310, threePack: 744,  tenKit: 2325 }, priceId: 'price_1U2HVKDQ2cuOrZVIBcIHf1jL' },
+      { mg: 15, prices: { single: 225, threePack: 540,  tenKit: 1688 }, priceId: 'price_1U2HVKDQ2cuOrZVIknp9kLFD' },
+      { mg: 20, prices: { single: 265, threePack: 636,  tenKit: 1988 }, priceId: 'price_1U2HVLDQ2cuOrZVI5mpVr2CF' },
+      { mg: 30, prices: { single: 310, threePack: 744,  tenKit: 2325 }, priceId: 'price_1U2HVLDQ2cuOrZVIzEOluSEm' },
+      { mg: 40, prices: { single: 385, threePack: 924,  tenKit: 2888 }, priceId: 'price_1U2HVhDQ2cuOrZVIS5VUD33m' },
     ]
   },
   {
     id: 'rta', name: 'RTA', displayName: 'Retatrutide', category: 'Metabolic', isGLP1: true, inStock: true,
     variants: [
-      { mg: 5,  prices: { single: 225, threePack: 540,  tenKit: 1688 } },
-      { mg: 10, prices: { single: 280, threePack: 672,  tenKit: 2100 } },
-      { mg: 15, prices: { single: 365, threePack: 876,  tenKit: 2738 } },
-      { mg: 20, prices: { single: 445, threePack: 1068, tenKit: 3338 } },
-      { mg: 30, prices: { single: 525, threePack: 1260, tenKit: 3938 } },
+      { mg: 5,  prices: { single: 225, threePack: 540,  tenKit: 1688 }, priceId: 'price_1U2HVhDQ2cuOrZVIeoHDBKBk' },
+      { mg: 10, prices: { single: 280, threePack: 672,  tenKit: 2100 }, priceId: 'price_1U2HVhDQ2cuOrZVIzQqhpqBv' },
+      { mg: 15, prices: { single: 365, threePack: 876,  tenKit: 2738 }, priceId: 'price_1U2HVhDQ2cuOrZVI0inH6cOt' },
+      { mg: 20, prices: { single: 445, threePack: 1068, tenKit: 3338 }, priceId: 'price_1U2HVhDQ2cuOrZVIBg0ObLBS' },
+      { mg: 30, prices: { single: 525, threePack: 1260, tenKit: 3938 }, priceId: 'price_1U2HW4DQ2cuOrZVIbW66hkOq' },
     ]
   },
   // ── Safe peptides (real names OK) ──────────────────────────────
   {
     id: 'bpc-157-5mg', name: 'BPC-157', category: 'Recovery', isGLP1: false, inStock: true,
-    variants: [{ mg: 5, prices: { single: 55, threePack: 132, tenKit: 413 } }]
+    variants: [{ mg: 5, prices: { single: 55, threePack: 132, tenKit: 413 }, priceId: 'price_1U2HWNDQ2cuOrZVIniDqcak7' }]
   },
   {
     id: 'bpc-157-10mg', name: 'BPC-157', category: 'Recovery', isGLP1: false, inStock: true,
-    variants: [{ mg: 10, prices: { single: 105, threePack: 252, tenKit: 788 } }]
+    variants: [{ mg: 10, prices: { single: 105, threePack: 252, tenKit: 788 }, priceId: 'price_1U2HWNDQ2cuOrZVIuUs9yBAX' }]
   },
   {
     id: 'tb-500-5mg', name: 'TB-500', category: 'Recovery', isGLP1: false, inStock: true,
-    variants: [{ mg: 5, prices: { single: 60, threePack: 144, tenKit: 450 } }]
+    variants: [{ mg: 5, prices: { single: 60, threePack: 144, tenKit: 450 }, priceId: 'price_1U2HW4DQ2cuOrZVI0ceV8yyY' }]
   },
   {
     id: 'tb-500-10mg', name: 'TB-500', category: 'Recovery', isGLP1: false, inStock: true,
-    variants: [{ mg: 10, prices: { single: 125, threePack: 300, tenKit: 938 } }]
+    variants: [{ mg: 10, prices: { single: 125, threePack: 300, tenKit: 938 }, priceId: 'price_1U2HW4DQ2cuOrZVISg0dLdrb' }]
   },
   {
     id: 'ghk-cu-50mg', name: 'GHK-Cu', category: 'Cosmetic', isGLP1: false, inStock: true,
-    variants: [{ mg: 50, prices: { single: 80, threePack: 192, tenKit: 600 } }]
+    variants: [{ mg: 50, prices: { single: 80, threePack: 192, tenKit: 600 }, priceId: 'price_1TjVWTDQ2cuOrZVI50ZVkzmf' }]
   },
   {
     id: 'nad-plus-500mg', name: 'NAD+', category: 'Longevity', isGLP1: false, inStock: true,
-    variants: [{ mg: 500, prices: { single: 195, threePack: 468, tenKit: 1463 } }]
+    variants: [{ mg: 500, prices: { single: 195, threePack: 468, tenKit: 1463 }, priceId: 'price_1U2HWNDQ2cuOrZVIQ0CeUduk' }]
   },
   {
     id: 'selank-10mg', name: 'Selank', category: 'Wellness', isGLP1: false, inStock: true,
-    variants: [{ mg: 10, prices: { single: 70, threePack: 168, tenKit: 525 } }]
+    variants: [{ mg: 10, prices: { single: 70, threePack: 168, tenKit: 525 }, priceId: 'price_1U2HW4DQ2cuOrZVIqVOn5UHV' }]
   },
   {
     id: 'semax-10mg', name: 'Semax', category: 'Wellness', isGLP1: false, inStock: true,
-    variants: [{ mg: 10, prices: { single: 70, threePack: 168, tenKit: 525 } }]
+    variants: [{ mg: 10, prices: { single: 70, threePack: 168, tenKit: 525 }, priceId: 'price_1U2HW4DQ2cuOrZVIj9Iuj7TO' }]
   },
 ];
 
@@ -122,6 +122,7 @@ export function CartProvider({ children }) {
     const variant = product.variants.find(v => v.mg === mg);
     if (!variant) return;
     const price = variant.prices[tier];
+    const priceId = variant.priceId || '';
     const cartId = `${productId}-${mg}-${tier}`;
 
     setItems(prev => {
@@ -139,8 +140,9 @@ export function CartProvider({ children }) {
           tier,
           tierLabel: TIER_LABELS[tier],
           price,
+          priceId,
+          stripeUrl: 'https://buy.stripe.com/PLACEHOLDER', // will be replaced with real payment links
           quantity: 1,
-          stripeUrl: 'https://buy.stripe.com/PLACEHOLDER',
           isGLP1: product.isGLP1,
           size: `${mg}mg`,
         }];
