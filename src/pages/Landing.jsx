@@ -141,7 +141,7 @@ export default function Landing({ onNavigate }) {
               🧪 Research Categories
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-              180+ Products Across 13 Categories
+              180 Products Across 12 Categories
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Everything from incretin research to nootropics, cosmetic peptides to mitochondrial modulators.
@@ -151,17 +151,16 @@ export default function Landing({ onNavigate }) {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {[
               { name: 'Incretin/GLP-1', icon: '🧬', count: '22' },
-              { name: 'GH Secretagogues', icon: '📈', count: '17' },
+              { name: 'GH Secretagogues', icon: '📈', count: '20' },
               { name: 'Healing & Recovery', icon: '🩹', count: '14' },
-              { name: 'Metabolic', icon: '⚡', count: '19' },
-              { name: 'Cosmetic / Skin', icon: '✨', count: '13' },
+              { name: 'Metabolic', icon: '⚡', count: '24' },
+              { name: 'Cosmetic/Skin', icon: '✨', count: '11' },
               { name: 'Nootropics', icon: '🧠', count: '19' },
+              { name: 'Longevity/NAD+', icon: '⏳', count: '17' },
+              { name: 'Immune', icon: '🛡️', count: '12' },
               { name: 'Sexual Health', icon: '❤️', count: '9' },
-              { name: 'Longevity', icon: '⏳', count: '12' },
-              { name: 'Immune Modulation', icon: '🛡️', count: '9' },
-              { name: 'Weight Mgmt', icon: '⚖️', count: '4' },
-              { name: 'Pain & Inflam.', icon: '💊', count: '6' },
-              { name: 'Blends', icon: '🧪', count: '14' },
+              { name: 'Pain & Inflammation', icon: '💊', count: '6' },
+              { name: 'Blends', icon: '🧪', count: '13' },
               { name: 'Supplies', icon: '📦', count: '13' },
             ].map((cat, i) => (
               <div
