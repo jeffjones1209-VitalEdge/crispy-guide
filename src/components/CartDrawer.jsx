@@ -136,7 +136,7 @@ export default function CartDrawer({ open, onClose }) {
                         <span className="text-xs text-gray-400 ml-1">({item.displayName})</span>
                       )}
                     </h3>
-                    <p className="text-xs text-gray-500">{item.mg}mg · {item.tierLabel}</p>
+                    <p className="text-xs text-gray-500">{item.mg}mg{item.tierLabel ? ` · ${item.tierLabel}` : ''}</p>
                     <p className="text-sm font-bold text-brand-600 mt-1">
                       ${(item.price * item.quantity).toFixed(2)}
                     </p>

@@ -1,10 +1,8 @@
 import { useState, useMemo } from 'react';
-import { useCart, getProducts, TIER_LABELS } from '../context/CartContext';
+import { getAllProducts, getCategories } from '../data/products';
+import { useCart } from '../context/CartContext';
 
-const CATEGORIES = ['All', 'Recovery', 'Cosmetic', 'Longevity', 'Wellness', 'Metabolic'];
-const TIERS = ['single', 'threePack', 'tenKit'];
-
-// SVG image overlay — renders real GLP-1 name as text-in-SVG (crawlers can't read it)
+// SVG image overlay for GLP-1 products
 function GLP1NameImage({ displayName }) {
   if (!displayName) return null;
   const width = displayName.length * 9 + 24;
@@ -24,11 +22,10 @@ export default function Products() {
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [addedMsg, setAddedMsg] = useState('');
-  // Per-card state: { [productId]: { mg, tier } }
-  const [selections, setSelections] = useState({});
   const { addItem } = useCart();
 
-  const productsList = useMemo(() => getProducts(), []);
+  const productsList = useMemo(() => getAllProducts(), []);
+  const categories = useMemo(() => getCategories(), []);
 
   const filtered = useMemo(() => {
     return productsList.filter(p => {
@@ -36,42 +33,16 @@ export default function Products() {
       const searchLower = searchTerm.toLowerCase();
       const mSearch = !searchTerm ||
         p.name.toLowerCase().includes(searchLower) ||
-        (p.displayName && p.displayName.toLowerCase().includes(searchLower));
+        (p.displayName && p.displayName.toLowerCase().includes(searchLower)) ||
+        (p.subcategory && p.subcategory.toLowerCase().includes(searchLower));
       return mCat && mSearch;
     });
   }, [categoryFilter, searchTerm, productsList]);
 
-  // Get or init selection for a product
-  const getSelection = (product) => {
-    const sel = selections[product.id];
-    const defaultMg = product.variants[0].mg;
-    const defaultTier = 'single';
-    return sel || { mg: defaultMg, tier: defaultTier };
-  };
-
-  const setMg = (productId, mg) => {
-    setSelections(prev => ({ ...prev, [productId]: { ...getSelection({ id: productId, variants: [{ mg: 0 }] }), mg } }));
-  };
-  const setTier = (productId, tier) => {
-    setSelections(prev => {
-      const cur = prev[productId] || { mg: 0, tier: 'single' };
-      return { ...prev, [productId]: { ...cur, tier } };
-    });
-  };
-
-  const getPrice = (product) => {
-    const sel = getSelection(product);
-    const variant = product.variants.find(v => v.mg === sel.mg);
-    return variant ? variant.prices[sel.tier] : 0;
-  };
-
   const handleAddToCart = (product) => {
-    const sel = getSelection(product);
-    addItem(product.id, sel.mg, sel.tier);
-    const label = product.displayName
-      ? `${product.name} ${sel.mg}mg ${TIER_LABELS[sel.tier]}`
-      : `${product.name} ${sel.mg}mg ${TIER_LABELS[sel.tier]}`;
-    setAddedMsg(`${label} added!`);
+    const variant = product.variants[0];
+    addItem(product.id, variant.mg, 'single');
+    setAddedMsg(`${product.name} ${variant.mg}mg added!`);
     setTimeout(() => setAddedMsg(''), 2500);
   };
 
@@ -108,7 +79,13 @@ export default function Products() {
             className="input-field w-full"
           />
           <div className="flex flex-wrap gap-2 mt-4">
-            {CATEGORIES.map(cat => (
+            <button
+              onClick={() => setCategoryFilter('All')}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                categoryFilter === 'All' ? 'bg-brand-500 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >All</button>
+            {categories.map(cat => (
               <button key={cat} onClick={() => setCategoryFilter(cat)}
                 className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                   categoryFilter === cat ? 'bg-brand-500 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -121,17 +98,14 @@ export default function Products() {
         {/* Product Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map(p => {
-            const sel = getSelection(p);
-            const variant = p.variants.find(v => v.mg === sel.mg);
-            const price = variant ? variant.prices[sel.tier] : 0;
-            const hasVariants = p.variants.length > 1;
+            const variant = p.variants[0];
 
             return (
               <div key={p.id} className="card-premium flex flex-col relative">
                 {/* GLP-1 SVG name overlay */}
                 {p.isGLP1 && p.displayName && <GLP1NameImage displayName={p.displayName} />}
 
-                {/* Header: name + category */}
+                {/* Header */}
                 <div className="flex items-start justify-between mb-2">
                   <div>
                     <div className="flex items-center gap-2">
@@ -142,59 +116,20 @@ export default function Products() {
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-gray-500">{p.category}</p>
+                    <p className="text-xs text-gray-500">{p.category}{p.subcategory ? ` · ${p.subcategory}` : ''}</p>
+                    {p.description && <p className="text-[10px] text-gray-400 mt-0.5">{p.description}</p>}
                   </div>
                   <span className="px-2 py-0.5 text-xs font-medium rounded-full border bg-green-50 text-green-600 border-green-200">
                     In Stock
                   </span>
                 </div>
 
-                {/* mg dropdown (GLP-1s only) */}
-                {hasVariants && (
-                  <div className="mb-3">
-                    <label className="text-[10px] text-gray-500 uppercase tracking-wider mb-1 block">Dosage</label>
-                    <select
-                      value={sel.mg}
-                      onChange={e => setMg(p.id, Number(e.target.value))}
-                      className="w-full px-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none bg-white"
-                    >
-                      {p.variants.map(v => (
-                        <option key={v.mg} value={v.mg}>{v.mg}mg</option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-                {!hasVariants && (
-                  <p className="text-xs text-gray-500 mb-2">{p.variants[0].mg}mg</p>
-                )}
+                {/* Size */}
+                <p className="text-xs text-gray-500 mb-2">{variant.mg}mg</p>
 
-                {/* Price display */}
+                {/* Price */}
                 <div className="mb-3">
-                  <span className="text-2xl font-bold text-gray-900">${price.toFixed(2)}</span>
-                  <span className="text-xs text-gray-400 ml-1">/{sel.tier === 'single' ? 'vial' : sel.tier === 'threePack' ? '3-pack' : '10-kit'}</span>
-                </div>
-
-                {/* Bundle tier pills */}
-                <div className="flex gap-1.5 mb-3">
-                  {TIERS.map(tier => {
-                    const tPrice = variant ? variant.prices[tier] : 0;
-                    const isActive = sel.tier === tier;
-                    const pct = tier === 'threePack' ? '−20%' : tier === 'tenKit' ? '−25%' : '';
-                    return (
-                      <button
-                        key={tier}
-                        onClick={() => setTier(p.id, tier)}
-                        className={`flex-1 py-1.5 px-1 rounded-lg text-[11px] font-medium transition-all text-center leading-tight ${
-                          isActive
-                            ? 'bg-brand-500 text-white shadow-sm'
-                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                        }`}
-                      >
-                        <span className="block">{tier === 'single' ? 'Single' : tier === 'threePack' ? '3-Pack' : '10-Kit'}</span>
-                        {pct && <span className="text-[9px] opacity-80">{pct}</span>}
-                      </button>
-                    );
-                  })}
+                  <span className="text-2xl font-bold text-gray-900">${variant.price.toFixed(2)}</span>
                 </div>
 
                 {/* Research disclaimer */}
@@ -209,7 +144,7 @@ export default function Products() {
                   onClick={() => handleAddToCart(p)}
                   className="w-full py-2.5 rounded-lg font-semibold text-sm bg-brand-500 text-white hover:bg-brand-600 shadow-sm hover:shadow-md transition-all"
                 >
-                  Add to Cart — ${price.toFixed(2)}
+                  Add to Cart — ${variant.price.toFixed(2)}
                 </button>
               </div>
             );
