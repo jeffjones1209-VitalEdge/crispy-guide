@@ -8,116 +8,116 @@ const PRODUCTS = [
   // GLP-1 / INCRETIN FAMILY (abbreviated names)
   // ═══════════════════════════════════════════════════════════════
   {
-    id: 'sema-5mg', name: 'SEMA', displayName: 'Semaglutide', category: 'Incretin', subcategory: 'GLP-1 Agonist',
+    id: 'sema-5mg', name: 'SEMA', displayName: 'Semaglutide', category: 'Incretin/GLP-1', subcategory: 'GLP-1 Agonist',
     isGLP1: true, inStock: true, cas: '910463-68-2', purity: '>99%',
     variants: [{ mg: 5, price: 89.00, priceId: 'price_1U2HK9DQ2cuOrZVIv8uOSdHN' }]
   },
   {
-    id: 'sema-10mg', name: 'SEMA', displayName: 'Semaglutide', category: 'Incretin', subcategory: 'GLP-1 Agonist',
+    id: 'sema-10mg', name: 'SEMA', displayName: 'Semaglutide', category: 'Incretin/GLP-1', subcategory: 'GLP-1 Agonist',
     isGLP1: true, inStock: true, cas: '910463-68-2', purity: '>99%',
     variants: [{ mg: 10, price: 189.00, priceId: 'price_1U2HK9DQ2cuOrZVIy7m7DygX' }]
   },
   {
-    id: 'sema-15mg', name: 'SEMA', displayName: 'Semaglutide', category: 'Incretin', subcategory: 'GLP-1 Agonist',
+    id: 'sema-15mg', name: 'SEMA', displayName: 'Semaglutide', category: 'Incretin/GLP-1', subcategory: 'GLP-1 Agonist',
     isGLP1: true, inStock: true, cas: '910463-68-2', purity: '>99%',
     variants: [{ mg: 15, price: 225.00, priceId: 'price_1U2HK9DQ2cuOrZVIZHeHLPbN' }]
   },
   {
-    id: 'sema-20mg', name: 'SEMA', displayName: 'Semaglutide', category: 'Incretin', subcategory: 'GLP-1 Agonist',
+    id: 'sema-20mg', name: 'SEMA', displayName: 'Semaglutide', category: 'Incretin/GLP-1', subcategory: 'GLP-1 Agonist',
     isGLP1: true, inStock: true, cas: '910463-68-2', purity: '>99%',
     variants: [{ mg: 20, price: 249.00, priceId: 'price_1U2HK9DQ2cuOrZVIxM4IfK1c' }]
   },
   {
-    id: 'sema-30mg', name: 'SEMA', displayName: 'Semaglutide', category: 'Incretin', subcategory: 'GLP-1 Agonist',
+    id: 'sema-30mg', name: 'SEMA', displayName: 'Semaglutide', category: 'Incretin/GLP-1', subcategory: 'GLP-1 Agonist',
     isGLP1: true, inStock: true, cas: '910463-68-2', purity: '>99%',
     variants: [{ mg: 30, price: 310.00, priceId: 'price_1U2HK9DQ2cuOrZVIVogbl2G9' }]
   },
   {
-    id: 'tzp-5mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin', subcategory: 'Dual GIP/GLP-1',
+    id: 'tzp-5mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin/GLP-1', subcategory: 'Dual GIP/GLP-1',
     isGLP1: true, inStock: true, cas: '2023788-19-2', purity: '>99%',
     variants: [{ mg: 5, price: 98.00, priceId: 'price_1U2HVKDQ2cuOrZVIz3hDmTU9' }]
   },
   {
-    id: 'tzp-10mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin', subcategory: 'Dual GIP/GLP-1',
+    id: 'tzp-10mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin/GLP-1', subcategory: 'Dual GIP/GLP-1',
     isGLP1: true, inStock: true, cas: '2023788-19-2', purity: '>99%',
     variants: [{ mg: 10, price: 310.00, priceId: 'price_1U2HVKDQ2cuOrZVIBcIHf1jL' }]
   },
   {
-    id: 'tzp-15mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin', subcategory: 'Dual GIP/GLP-1',
+    id: 'tzp-15mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin/GLP-1', subcategory: 'Dual GIP/GLP-1',
     isGLP1: true, inStock: true, cas: '2023788-19-2', purity: '>99%',
     variants: [{ mg: 15, price: 225.00, priceId: 'price_1U2HVKDQ2cuOrZVIknp9kLFD' }]
   },
   {
-    id: 'tzp-20mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin', subcategory: 'Dual GIP/GLP-1',
+    id: 'tzp-20mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin/GLP-1', subcategory: 'Dual GIP/GLP-1',
     isGLP1: true, inStock: true, cas: '2023788-19-2', purity: '>99%',
     variants: [{ mg: 20, price: 265.00, priceId: 'price_1U2HVLDQ2cuOrZVI5mpVr2CF' }]
   },
   {
-    id: 'tzp-30mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin', subcategory: 'Dual GIP/GLP-1',
+    id: 'tzp-30mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin/GLP-1', subcategory: 'Dual GIP/GLP-1',
     isGLP1: true, inStock: true, cas: '2023788-19-2', purity: '>99%',
     variants: [{ mg: 30, price: 310.00, priceId: 'price_1U2HVLDQ2cuOrZVIzEOluSEm' }]
   },
   {
-    id: 'tzp-40mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin', subcategory: 'Dual GIP/GLP-1',
+    id: 'tzp-40mg', name: 'TZP', displayName: 'Tirzepatide', category: 'Incretin/GLP-1', subcategory: 'Dual GIP/GLP-1',
     isGLP1: true, inStock: true, cas: '2023788-19-2', purity: '>99%',
     variants: [{ mg: 40, price: 385.00, priceId: 'price_1U2HVhDQ2cuOrZVIS5VUD33m' }]
   },
   {
-    id: 'rta-5mg', name: 'RTA', displayName: 'Retatrutide', category: 'Incretin', subcategory: 'Triple GIP/GLP-1/GCGR',
+    id: 'rta-5mg', name: 'RTA', displayName: 'Retatrutide', category: 'Incretin/GLP-1', subcategory: 'Triple GIP/GLP-1/GCGR',
     isGLP1: true, inStock: true, cas: '2381089-83-2', purity: '>99%',
     variants: [{ mg: 5, price: 225.00, priceId: 'price_1U2HVhDQ2cuOrZVIeoHDBKBk' }]
   },
   {
-    id: 'rta-10mg', name: 'RTA', displayName: 'Retatrutide', category: 'Incretin', subcategory: 'Triple GIP/GLP-1/GCGR',
+    id: 'rta-10mg', name: 'RTA', displayName: 'Retatrutide', category: 'Incretin/GLP-1', subcategory: 'Triple GIP/GLP-1/GCGR',
     isGLP1: true, inStock: true, cas: '2381089-83-2', purity: '>99%',
     variants: [{ mg: 10, price: 280.00, priceId: 'price_1U2HVhDQ2cuOrZVIzQqhpqBv' }]
   },
   {
-    id: 'rta-15mg', name: 'RTA', displayName: 'Retatrutide', category: 'Incretin', subcategory: 'Triple GIP/GLP-1/GCGR',
+    id: 'rta-15mg', name: 'RTA', displayName: 'Retatrutide', category: 'Incretin/GLP-1', subcategory: 'Triple GIP/GLP-1/GCGR',
     isGLP1: true, inStock: true, cas: '2381089-83-2', purity: '>99%',
     variants: [{ mg: 15, price: 365.00, priceId: 'price_1U2HVhDQ2cuOrZVI0inH6cOt' }]
   },
   {
-    id: 'rta-20mg', name: 'RTA', displayName: 'Retatrutide', category: 'Incretin', subcategory: 'Triple GIP/GLP-1/GCGR',
+    id: 'rta-20mg', name: 'RTA', displayName: 'Retatrutide', category: 'Incretin/GLP-1', subcategory: 'Triple GIP/GLP-1/GCGR',
     isGLP1: true, inStock: true, cas: '2381089-83-2', purity: '>99%',
     variants: [{ mg: 20, price: 445.00, priceId: 'price_1U2HVhDQ2cuOrZVIBg0ObLBS' }]
   },
   {
-    id: 'rta-30mg', name: 'RTA', displayName: 'Retatrutide', category: 'Incretin', subcategory: 'Triple GIP/GLP-1/GCGR',
+    id: 'rta-30mg', name: 'RTA', displayName: 'Retatrutide', category: 'Incretin/GLP-1', subcategory: 'Triple GIP/GLP-1/GCGR',
     isGLP1: true, inStock: true, cas: '2381089-83-2', purity: '>99%',
     variants: [{ mg: 30, price: 525.00, priceId: 'price_1U2HW4DQ2cuOrZVIbW66hkOq' }]
   },
   // Orforglipron (non-peptide GLP-1 oral)
   {
-    id: 'orf-30mg', name: 'ORF', displayName: 'Orforglipron', category: 'Incretin', subcategory: 'Oral GLP-1 Agonist',
+    id: 'orf-30mg', name: 'ORF', displayName: 'Orforglipron', category: 'Incretin/GLP-1', subcategory: 'Oral GLP-1 Agonist',
     isGLP1: true, inStock: true, cas: '2212020-52-3', purity: '>98%',
     variants: [{ mg: 30, price: 295.00 }]
   },
   // Mazdutide
   {
-    id: 'maz-5mg', name: 'MAZ', displayName: 'Mazdutide', category: 'Incretin', subcategory: 'GLP-1/GCGR Dual',
+    id: 'maz-5mg', name: 'MAZ', displayName: 'Mazdutide', category: 'Incretin/GLP-1', subcategory: 'GLP-1/GCGR Dual',
     isGLP1: true, inStock: true, cas: '2259884-03-0', purity: '>99%',
     variants: [{ mg: 5, price: 210.00 }]
   },
   {
-    id: 'maz-10mg', name: 'MAZ', displayName: 'Mazdutide', category: 'Incretin', subcategory: 'GLP-1/GCGR Dual',
+    id: 'maz-10mg', name: 'MAZ', displayName: 'Mazdutide', category: 'Incretin/GLP-1', subcategory: 'GLP-1/GCGR Dual',
     isGLP1: true, inStock: true, cas: '2259884-03-0', purity: '>99%',
     variants: [{ mg: 10, price: 350.00 }]
   },
   // Survodutide
   {
-    id: 'sur-5mg', name: 'SUR', displayName: 'Survodutide', category: 'Incretin', subcategory: 'GLP-1/GCGR Dual',
+    id: 'sur-5mg', name: 'SUR', displayName: 'Survodutide', category: 'Incretin/GLP-1', subcategory: 'GLP-1/GCGR Dual',
     isGLP1: true, inStock: true, cas: '2807497-80-1', purity: '>99%',
     variants: [{ mg: 5, price: 240.00 }]
   },
   // Cagrilintide
   {
-    id: 'cag-5mg', name: 'CAG', displayName: 'Cagrilintide', category: 'Incretin', subcategory: 'Amylin Analog',
+    id: 'cag-5mg', name: 'CAG', displayName: 'Cagrilintide', category: 'Incretin/GLP-1', subcategory: 'Amylin Analog',
     isGLP1: true, inStock: true, cas: '1884206-13-6', purity: '>99%',
     variants: [{ mg: 5, price: 235.00 }]
   },
   {
-    id: 'cag-10mg', name: 'CAG', displayName: 'Cagrilintide', category: 'Incretin', subcategory: 'Amylin Analog',
+    id: 'cag-10mg', name: 'CAG', displayName: 'Cagrilintide', category: 'Incretin/GLP-1', subcategory: 'Amylin Analog',
     isGLP1: true, inStock: true, cas: '1884206-13-6', purity: '>99%',
     variants: [{ mg: 10, price: 385.00 }]
   },
@@ -125,26 +125,26 @@ const PRODUCTS = [
   // ═══════════════════════════════════════════════════════════════
   // GROWTH HORMONE SECRETAGOGUES
   // ═══════════════════════════════════════════════════════════════
-  { id: 'ipa-2mg', name: 'Ipamorelin', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 2, price: 45.00 }] },
-  { id: 'ipa-5mg', name: 'Ipamorelin', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 5, price: 65.00 }] },
-  { id: 'ipa-10mg', name: 'Ipamorelin', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 10, price: 110.00 }] },
-  { id: 'cjc1295-2mg', name: 'CJC-1295 (no DAC)', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 2, price: 48.00 }] },
-  { id: 'cjc1295-5mg', name: 'CJC-1295 (no DAC)', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 5, price: 72.00 }] },
-  { id: 'cjc1295-10mg', name: 'CJC-1295 (no DAC)', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 10, price: 120.00 }] },
-  { id: 'cjc-dac-2mg', name: 'CJC-1295 (DAC)', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 2, price: 55.00 }] },
-  { id: 'cjc-dac-5mg', name: 'CJC-1295 (DAC)', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 5, price: 95.00 }] },
-  { id: 'hexarelin-2mg', name: 'Hexarelin', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 2, price: 48.00 }] },
-  { id: 'hexarelin-5mg', name: 'Hexarelin', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 5, price: 72.00 }] },
-  { id: 'ghrp2-5mg', name: 'GHRP-2', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 5, price: 38.00 }] },
-  { id: 'ghrp2-10mg', name: 'GHRP-2', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 10, price: 62.00 }] },
-  { id: 'ghrp6-5mg', name: 'GHRP-6', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 5, price: 38.00 }] },
-  { id: 'ghrp6-10mg', name: 'GHRP-6', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 10, price: 62.00 }] },
-  { id: 'tesamorelin-2mg', name: 'Tesamorelin', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 2, price: 65.00 }] },
-  { id: 'tesamorelin-5mg', name: 'Tesamorelin', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 5, price: 125.00 }] },
-  { id: 'tesamorelin-10mg', name: 'Tesamorelin', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 10, price: 210.00 }] },
-  { id: 'sermorelin-2mg', name: 'Sermorelin', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 2, price: 35.00 }] },
-  { id: 'sermorelin-5mg', name: 'Sermorelin', category: 'GH Secretagogue', inStock: true, variants: [{ mg: 5, price: 58.00 }] },
-  { id: 'mk677-25mg', name: 'MK-677 (Ibutamoren)', category: 'GH Secretagogue', subcategory: 'Oral', inStock: true, variants: [{ mg: 25, price: 65.00 }] },
+  { id: 'ipa-2mg', name: 'Ipamorelin', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 2, price: 45.00 }] },
+  { id: 'ipa-5mg', name: 'Ipamorelin', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 5, price: 65.00 }] },
+  { id: 'ipa-10mg', name: 'Ipamorelin', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 10, price: 110.00 }] },
+  { id: 'cjc1295-2mg', name: 'CJC-1295 (no DAC)', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 2, price: 48.00 }] },
+  { id: 'cjc1295-5mg', name: 'CJC-1295 (no DAC)', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 5, price: 72.00 }] },
+  { id: 'cjc1295-10mg', name: 'CJC-1295 (no DAC)', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 10, price: 120.00 }] },
+  { id: 'cjc-dac-2mg', name: 'CJC-1295 (DAC)', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 2, price: 55.00 }] },
+  { id: 'cjc-dac-5mg', name: 'CJC-1295 (DAC)', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 5, price: 95.00 }] },
+  { id: 'hexarelin-2mg', name: 'Hexarelin', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 2, price: 48.00 }] },
+  { id: 'hexarelin-5mg', name: 'Hexarelin', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 5, price: 72.00 }] },
+  { id: 'ghrp2-5mg', name: 'GHRP-2', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 5, price: 38.00 }] },
+  { id: 'ghrp2-10mg', name: 'GHRP-2', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 10, price: 62.00 }] },
+  { id: 'ghrp6-5mg', name: 'GHRP-6', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 5, price: 38.00 }] },
+  { id: 'ghrp6-10mg', name: 'GHRP-6', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 10, price: 62.00 }] },
+  { id: 'tesamorelin-2mg', name: 'Tesamorelin', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 2, price: 65.00 }] },
+  { id: 'tesamorelin-5mg', name: 'Tesamorelin', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 5, price: 125.00 }] },
+  { id: 'tesamorelin-10mg', name: 'Tesamorelin', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 10, price: 210.00 }] },
+  { id: 'sermorelin-2mg', name: 'Sermorelin', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 2, price: 35.00 }] },
+  { id: 'sermorelin-5mg', name: 'Sermorelin', category: 'GH Secretagogues', inStock: true, variants: [{ mg: 5, price: 58.00 }] },
+  { id: 'mk677-25mg', name: 'MK-677 (Ibutamoren)', category: 'GH Secretagogues', subcategory: 'Oral', inStock: true, variants: [{ mg: 25, price: 65.00 }] },
 
   // ═══════════════════════════════════════════════════════════════
   // HEALING & RECOVERY PEPTIDES
@@ -187,52 +187,52 @@ const PRODUCTS = [
   { id: 'frag176191-10mg', name: 'HGH Fragment 176-191', category: 'Metabolic', subcategory: 'HGH Fragment', inStock: true, variants: [{ mg: 10, price: 95.00 }] },
   { id: '5amino1mq-50mg', name: '5-Amino-1MQ', category: 'Metabolic', subcategory: 'NNMT Inhibitor', inStock: true, variants: [{ mg: 50, price: 155.00 }] },
   { id: '5amino1mq-100mg', name: '5-Amino-1MQ', category: 'Metabolic', subcategory: 'NNMT Inhibitor', inStock: true, variants: [{ mg: 100, price: 265.00 }] },
-  { id: 'nad-500mg', name: 'NAD+', category: 'Metabolic', subcategory: 'Coenzyme', inStock: true, variants: [{ mg: 500, price: 195.00, priceId: 'price_1U2HWNDQ2cuOrZVIQ0CeUduk' }] },
-  { id: 'nad-1000mg', name: 'NAD+', category: 'Metabolic', subcategory: 'Coenzyme', inStock: true, variants: [{ mg: 1000, price: 345.00 }] },
-  { id: 'nadh-100mg', name: 'NADH', category: 'Metabolic', subcategory: 'Coenzyme', inStock: true, variants: [{ mg: 100, price: 95.00 }] },
-  { id: 'nadh-250mg', name: 'NADH', category: 'Metabolic', subcategory: 'Coenzyme', inStock: true, variants: [{ mg: 250, price: 185.00 }] },
-  { id: 'nrm-500mg', name: 'NR (Nicotinamide Riboside)', category: 'Metabolic', subcategory: 'NAD+ Precursor', inStock: true, variants: [{ mg: 500, price: 175.00 }] },
-  { id: 'nrmn-500mg', name: 'NMN', category: 'Metabolic', subcategory: 'NAD+ Precursor', inStock: true, variants: [{ mg: 500, price: 165.00 }] },
+  { id: 'nad-500mg', name: 'NAD+', category: 'Longevity/NAD+', subcategory: 'Coenzyme', inStock: true, variants: [{ mg: 500, price: 195.00, priceId: 'price_1U2HWNDQ2cuOrZVIQ0CeUduk' }] },
+  { id: 'nad-1000mg', name: 'NAD+', category: 'Longevity/NAD+', subcategory: 'Coenzyme', inStock: true, variants: [{ mg: 1000, price: 345.00 }] },
+  { id: 'nadh-100mg', name: 'NADH', category: 'Longevity/NAD+', subcategory: 'Coenzyme', inStock: true, variants: [{ mg: 100, price: 95.00 }] },
+  { id: 'nadh-250mg', name: 'NADH', category: 'Longevity/NAD+', subcategory: 'Coenzyme', inStock: true, variants: [{ mg: 250, price: 185.00 }] },
+  { id: 'nrm-500mg', name: 'NR (Nicotinamide Riboside)', category: 'Longevity/NAD+', subcategory: 'NAD+ Precursor', inStock: true, variants: [{ mg: 500, price: 175.00 }] },
+  { id: 'nrmn-500mg', name: 'NMN', category: 'Longevity/NAD+', subcategory: 'NAD+ Precursor', inStock: true, variants: [{ mg: 500, price: 165.00 }] },
 
   // ═══════════════════════════════════════════════════════════════
   // COSMETIC & SKIN PEPTIDES
   // ═══════════════════════════════════════════════════════════════
-  { id: 'mt2-10mg', name: 'Melanotan II', category: 'Cosmetic', subcategory: 'Tanning', inStock: true, variants: [{ mg: 10, price: 48.00 }] },
-  { id: 'mt2-20mg', name: 'Melanotan II', category: 'Cosmetic', subcategory: 'Tanning', inStock: true, variants: [{ mg: 20, price: 75.00 }] },
-  { id: 'mt1-10mg', name: 'Melanotan I', category: 'Cosmetic', subcategory: 'Tanning', inStock: true, variants: [{ mg: 10, price: 62.00 }] },
-  { id: 'snap8-10mg', name: 'SNAP-8', category: 'Cosmetic', subcategory: 'Anti-Wrinkle', inStock: true, variants: [{ mg: 10, price: 45.00 }] },
-  { id: 'snap8-20mg', name: 'SNAP-8', category: 'Cosmetic', subcategory: 'Anti-Wrinkle', inStock: true, variants: [{ mg: 20, price: 72.00 }] },
-  { id: 'argireline-10mg', name: 'Argireline', category: 'Cosmetic', subcategory: 'Anti-Wrinkle', inStock: true, variants: [{ mg: 10, price: 42.00 }] },
-  { id: 'argireline-20mg', name: 'Argireline', category: 'Cosmetic', subcategory: 'Anti-Wrinkle', inStock: true, variants: [{ mg: 20, price: 68.00 }] },
-  { id: 'leuphasyl-5mg', name: 'Leuphasyl', category: 'Cosmetic', subcategory: 'Anti-Wrinkle', inStock: true, variants: [{ mg: 5, price: 40.00 }] },
-  { id: 'matrixyl-10mg', name: 'Matrixyl (Pal-KTTKS)', category: 'Cosmetic', subcategory: 'Collagen', inStock: true, variants: [{ mg: 10, price: 50.00 }] },
-  { id: 'collaxyl-10mg', name: 'Collaxyl', category: 'Cosmetic', subcategory: 'Collagen', inStock: true, variants: [{ mg: 10, price: 48.00 }] },
-  { id: 'epitalon-10mg', name: 'Epitalon', category: 'Cosmetic', subcategory: 'Telomere', inStock: true, variants: [{ mg: 10, price: 55.00 }] },
-  { id: 'epitalon-20mg', name: 'Epitalon', category: 'Cosmetic', subcategory: 'Telomere', inStock: true, variants: [{ mg: 20, price: 95.00 }] },
-  { id: 'palghk-10mg', name: 'Pal-GHK', category: 'Cosmetic', subcategory: 'Copper Peptide', inStock: true, variants: [{ mg: 10, price: 58.00 }] },
+  { id: 'mt2-10mg', name: 'Melanotan II', category: 'Cosmetic/Skin', subcategory: 'Tanning', inStock: true, variants: [{ mg: 10, price: 48.00 }] },
+  { id: 'mt2-20mg', name: 'Melanotan II', category: 'Cosmetic/Skin', subcategory: 'Tanning', inStock: true, variants: [{ mg: 20, price: 75.00 }] },
+  { id: 'mt1-10mg', name: 'Melanotan I', category: 'Cosmetic/Skin', subcategory: 'Tanning', inStock: true, variants: [{ mg: 10, price: 62.00 }] },
+  { id: 'snap8-10mg', name: 'SNAP-8', category: 'Cosmetic/Skin', subcategory: 'Anti-Wrinkle', inStock: true, variants: [{ mg: 10, price: 45.00 }] },
+  { id: 'snap8-20mg', name: 'SNAP-8', category: 'Cosmetic/Skin', subcategory: 'Anti-Wrinkle', inStock: true, variants: [{ mg: 20, price: 72.00 }] },
+  { id: 'argireline-10mg', name: 'Argireline', category: 'Cosmetic/Skin', subcategory: 'Anti-Wrinkle', inStock: true, variants: [{ mg: 10, price: 42.00 }] },
+  { id: 'argireline-20mg', name: 'Argireline', category: 'Cosmetic/Skin', subcategory: 'Anti-Wrinkle', inStock: true, variants: [{ mg: 20, price: 68.00 }] },
+  { id: 'leuphasyl-5mg', name: 'Leuphasyl', category: 'Cosmetic/Skin', subcategory: 'Anti-Wrinkle', inStock: true, variants: [{ mg: 5, price: 40.00 }] },
+  { id: 'matrixyl-10mg', name: 'Matrixyl (Pal-KTTKS)', category: 'Cosmetic/Skin', subcategory: 'Collagen', inStock: true, variants: [{ mg: 10, price: 50.00 }] },
+  { id: 'collaxyl-10mg', name: 'Collaxyl', category: 'Cosmetic/Skin', subcategory: 'Collagen', inStock: true, variants: [{ mg: 10, price: 48.00 }] },
+  { id: 'epitalon-10mg', name: 'Epitalon', category: 'Longevity/NAD+', subcategory: 'Telomere', inStock: true, variants: [{ mg: 10, price: 55.00 }] },
+  { id: 'epitalon-20mg', name: 'Epitalon', category: 'Longevity/NAD+', subcategory: 'Telomere', inStock: true, variants: [{ mg: 20, price: 95.00 }] },
+  { id: 'palghk-10mg', name: 'Pal-GHK', category: 'Cosmetic/Skin', subcategory: 'Copper Peptide', inStock: true, variants: [{ mg: 10, price: 58.00 }] },
 
   // ═══════════════════════════════════════════════════════════════
   // NEUROPEPTIDES & COGNITION
   // ═══════════════════════════════════════════════════════════════
-  { id: 'semax-10mg', name: 'Semax', category: 'Nootropic', inStock: true, variants: [{ mg: 10, price: 70.00, priceId: 'price_1U2HW4DQ2cuOrZVIj9Iuj7TO' }] },
-  { id: 'semax-30mg', name: 'Semax', category: 'Nootropic', inStock: true, variants: [{ mg: 30, price: 165.00 }] },
-  { id: 'selank-10mg', name: 'Selank', category: 'Nootropic', inStock: true, variants: [{ mg: 10, price: 70.00, priceId: 'price_1U2HW4DQ2cuOrZVIqVOn5UHV' }] },
-  { id: 'selank-30mg', name: 'Selank', category: 'Nootropic', inStock: true, variants: [{ mg: 30, price: 165.00 }] },
-  { id: 'naselank-5mg', name: 'NA-Selank', category: 'Nootropic', inStock: true, variants: [{ mg: 5, price: 75.00 }] },
-  { id: 'nasemax-5mg', name: 'NA-Semax', category: 'Nootropic', inStock: true, variants: [{ mg: 5, price: 75.00 }] },
-  { id: 'nasemaxamidate-5mg', name: 'NA-Semax Amidate', category: 'Nootropic', inStock: true, variants: [{ mg: 5, price: 95.00 }] },
-  { id: 'cerebrolysin-2ml', name: 'Cerebrolysin Analog', category: 'Nootropic', inStock: true, variants: [{ mg: 215, price: 95.00 }] },
-  { id: 'cortexin-10mg', name: 'Cortexin', category: 'Nootropic', inStock: true, variants: [{ mg: 10, price: 62.00 }] },
-  { id: 'p21-5mg', name: 'P21', category: 'Nootropic', subcategory: 'CNTF', inStock: true, variants: [{ mg: 5, price: 85.00 }] },
-  { id: 'adamax-5mg', name: 'Adamax', category: 'Nootropic', inStock: true, variants: [{ mg: 5, price: 85.00 }] },
-  { id: 'dihexa-10mg', name: 'Dihexa', category: 'Nootropic', inStock: true, variants: [{ mg: 10, price: 120.00 }] },
-  { id: 'noopept-10mg', name: 'Noopept', category: 'Nootropic', inStock: true, variants: [{ mg: 10, price: 35.00 }] },
-  { id: 'noopept-20mg', name: 'Noopept', category: 'Nootropic', inStock: true, variants: [{ mg: 20, price: 55.00 }] },
-  { id: 'pinealon-10mg', name: 'Pinealon', category: 'Nootropic', inStock: true, variants: [{ mg: 10, price: 48.00 }] },
-  { id: 'pinealon-20mg', name: 'Pinealon', category: 'Nootropic', inStock: true, variants: [{ mg: 20, price: 80.00 }] },
-  { id: 'vesugen-20mg', name: 'Vesugen', category: 'Nootropic', subcategory: 'Vascular', inStock: true, variants: [{ mg: 20, price: 68.00 }] },
-  { id: 'dsip-5mg', name: 'DSIP', category: 'Nootropic', subcategory: 'Sleep', inStock: true, variants: [{ mg: 5, price: 42.00 }] },
-  { id: 'dsip-10mg', name: 'DSIP', category: 'Nootropic', subcategory: 'Sleep', inStock: true, variants: [{ mg: 10, price: 65.00 }] },
+  { id: 'semax-10mg', name: 'Semax', category: 'Nootropics', inStock: true, variants: [{ mg: 10, price: 70.00, priceId: 'price_1U2HW4DQ2cuOrZVIj9Iuj7TO' }] },
+  { id: 'semax-30mg', name: 'Semax', category: 'Nootropics', inStock: true, variants: [{ mg: 30, price: 165.00 }] },
+  { id: 'selank-10mg', name: 'Selank', category: 'Nootropics', inStock: true, variants: [{ mg: 10, price: 70.00, priceId: 'price_1U2HW4DQ2cuOrZVIqVOn5UHV' }] },
+  { id: 'selank-30mg', name: 'Selank', category: 'Nootropics', inStock: true, variants: [{ mg: 30, price: 165.00 }] },
+  { id: 'naselank-5mg', name: 'NA-Selank', category: 'Nootropics', inStock: true, variants: [{ mg: 5, price: 75.00 }] },
+  { id: 'nasemax-5mg', name: 'NA-Semax', category: 'Nootropics', inStock: true, variants: [{ mg: 5, price: 75.00 }] },
+  { id: 'nasemaxamidate-5mg', name: 'NA-Semax Amidate', category: 'Nootropics', inStock: true, variants: [{ mg: 5, price: 95.00 }] },
+  { id: 'cerebrolysin-2ml', name: 'Cerebrolysin Analog', category: 'Nootropics', inStock: true, variants: [{ mg: 215, price: 95.00 }] },
+  { id: 'cortexin-10mg', name: 'Cortexin', category: 'Nootropics', inStock: true, variants: [{ mg: 10, price: 62.00 }] },
+  { id: 'p21-5mg', name: 'P21', category: 'Nootropics', subcategory: 'CNTF', inStock: true, variants: [{ mg: 5, price: 85.00 }] },
+  { id: 'adamax-5mg', name: 'Adamax', category: 'Nootropics', inStock: true, variants: [{ mg: 5, price: 85.00 }] },
+  { id: 'dihexa-10mg', name: 'Dihexa', category: 'Nootropics', inStock: true, variants: [{ mg: 10, price: 120.00 }] },
+  { id: 'noopept-10mg', name: 'Noopept', category: 'Nootropics', inStock: true, variants: [{ mg: 10, price: 35.00 }] },
+  { id: 'noopept-20mg', name: 'Noopept', category: 'Nootropics', inStock: true, variants: [{ mg: 20, price: 55.00 }] },
+  { id: 'pinealon-10mg', name: 'Pinealon', category: 'Nootropics', inStock: true, variants: [{ mg: 10, price: 48.00 }] },
+  { id: 'pinealon-20mg', name: 'Pinealon', category: 'Nootropics', inStock: true, variants: [{ mg: 20, price: 80.00 }] },
+  { id: 'vesugen-20mg', name: 'Vesugen', category: 'Nootropics', subcategory: 'Vascular', inStock: true, variants: [{ mg: 20, price: 68.00 }] },
+  { id: 'dsip-5mg', name: 'DSIP', category: 'Nootropics', subcategory: 'Sleep', inStock: true, variants: [{ mg: 5, price: 42.00 }] },
+  { id: 'dsip-10mg', name: 'DSIP', category: 'Nootropics', subcategory: 'Sleep', inStock: true, variants: [{ mg: 10, price: 65.00 }] },
 
   // ═══════════════════════════════════════════════════════════════
   // SEXUAL HEALTH
@@ -250,39 +250,39 @@ const PRODUCTS = [
   // ═══════════════════════════════════════════════════════════════
   // LONGEVITY & ANTI-AGING
   // ═══════════════════════════════════════════════════════════════
-  { id: 'epithalon-10mg', name: 'Epithalon', category: 'Longevity', subcategory: 'Pineal', inStock: true, variants: [{ mg: 10, price: 55.00 }] },
-  { id: 'epithalon-20mg', name: 'Epithalon', category: 'Longevity', subcategory: 'Pineal', inStock: true, variants: [{ mg: 20, price: 95.00 }] },
-  { id: 'ta1-5mg', name: 'Thymosin Alpha-1', category: 'Longevity', subcategory: 'Immune', inStock: true, variants: [{ mg: 5, price: 110.00 }] },
-  { id: 'ta1-10mg', name: 'Thymosin Alpha-1', category: 'Longevity', subcategory: 'Immune', inStock: true, variants: [{ mg: 10, price: 185.00 }] },
-  { id: 'thymulin-10mg', name: 'Thymulin', category: 'Longevity', subcategory: 'Immune', inStock: true, variants: [{ mg: 10, price: 72.00 }] },
-  { id: 'foxo4dri-5mg', name: 'FOXO4-DRI', category: 'Longevity', subcategory: 'Senolytic', inStock: true, variants: [{ mg: 5, price: 185.00 }] },
-  { id: 'foxo4dri-10mg', name: 'FOXO4-DRI', category: 'Longevity', subcategory: 'Senolytic', inStock: true, variants: [{ mg: 10, price: 325.00 }] },
-  { id: 'epobis-5mg', name: 'Epobis', category: 'Longevity', subcategory: 'Neurogenic', inStock: true, variants: [{ mg: 5, price: 125.00 }] },
-  { id: 'cycloastragenol-50mg', name: 'Cycloastragenol', category: 'Longevity', subcategory: 'Telomerase', inStock: true, variants: [{ mg: 50, price: 145.00 }] },
-  { id: 'astragalosideiv-50mg', name: 'Astragaloside IV', category: 'Longevity', subcategory: 'Telomerase', inStock: true, variants: [{ mg: 50, price: 85.00 }] },
-  { id: 'glutathione-1500mg', name: 'Glutathione', category: 'Longevity', subcategory: 'Antioxidant', inStock: true, variants: [{ mg: 1500, price: 65.00 }] },
-  { id: 'glutathione-3000mg', name: 'Glutathione', category: 'Longevity', subcategory: 'Antioxidant', inStock: true, variants: [{ mg: 3000, price: 105.00 }] },
+  { id: 'epithalon-10mg', name: 'Epithalon', category: 'Longevity/NAD+', subcategory: 'Pineal', inStock: true, variants: [{ mg: 10, price: 55.00 }] },
+  { id: 'epithalon-20mg', name: 'Epithalon', category: 'Longevity/NAD+', subcategory: 'Pineal', inStock: true, variants: [{ mg: 20, price: 95.00 }] },
+  { id: 'ta1-5mg', name: 'Thymosin Alpha-1', category: 'Immune', subcategory: 'Thymic', inStock: true, variants: [{ mg: 5, price: 110.00 }] },
+  { id: 'ta1-10mg', name: 'Thymosin Alpha-1', category: 'Immune', subcategory: 'Thymic', inStock: true, variants: [{ mg: 10, price: 185.00 }] },
+  { id: 'thymulin-10mg', name: 'Thymulin', category: 'Immune', subcategory: 'Thymic', inStock: true, variants: [{ mg: 10, price: 72.00 }] },
+  { id: 'foxo4dri-5mg', name: 'FOXO4-DRI', category: 'Longevity/NAD+', subcategory: 'Senolytic', inStock: true, variants: [{ mg: 5, price: 185.00 }] },
+  { id: 'foxo4dri-10mg', name: 'FOXO4-DRI', category: 'Longevity/NAD+', subcategory: 'Senolytic', inStock: true, variants: [{ mg: 10, price: 325.00 }] },
+  { id: 'epobis-5mg', name: 'Epobis', category: 'Longevity/NAD+', subcategory: 'Neurogenic', inStock: true, variants: [{ mg: 5, price: 125.00 }] },
+  { id: 'cycloastragenol-50mg', name: 'Cycloastragenol', category: 'Longevity/NAD+', subcategory: 'Telomerase', inStock: true, variants: [{ mg: 50, price: 145.00 }] },
+  { id: 'astragalosideiv-50mg', name: 'Astragaloside IV', category: 'Longevity/NAD+', subcategory: 'Telomerase', inStock: true, variants: [{ mg: 50, price: 85.00 }] },
+  { id: 'glutathione-1500mg', name: 'Glutathione', category: 'Longevity/NAD+', subcategory: 'Antioxidant', inStock: true, variants: [{ mg: 1500, price: 65.00 }] },
+  { id: 'glutathione-3000mg', name: 'Glutathione', category: 'Longevity/NAD+', subcategory: 'Antioxidant', inStock: true, variants: [{ mg: 3000, price: 105.00 }] },
 
   // ═══════════════════════════════════════════════════════════════
   // IMMUNE MODULATORS
   // ═══════════════════════════════════════════════════════════════
-  { id: 'rpf78-5mg', name: 'RPh-78', category: 'Immune Modulation', inStock: true, variants: [{ mg: 5, price: 95.00 }] },
-  { id: 'vilon-50mg', name: 'Vilon', category: 'Immune Modulation', subcategory: 'Thymic', inStock: true, variants: [{ mg: 50, price: 58.00 }] },
-  { id: 'bronchogen-20mg', name: 'Bronchogen', category: 'Immune Modulation', subcategory: 'Lung', inStock: true, variants: [{ mg: 20, price: 52.00 }] },
-  { id: 'cardogen-20mg', name: 'Cardogen', category: 'Immune Modulation', subcategory: 'Cardiac', inStock: true, variants: [{ mg: 20, price: 55.00 }] },
-  { id: 'livagen-20mg', name: 'Livagen', category: 'Immune Modulation', subcategory: 'Liver', inStock: true, variants: [{ mg: 20, price: 50.00 }] },
-  { id: 'prostatilen-20mg', name: 'Prostatilen', category: 'Immune Modulation', subcategory: 'Prostate', inStock: true, variants: [{ mg: 20, price: 58.00 }] },
-  { id: 'renovin-20mg', name: 'Renovin', category: 'Immune Modulation', subcategory: 'Renal', inStock: true, variants: [{ mg: 20, price: 55.00 }] },
-  { id: 'testagen-20mg', name: 'Testagen', category: 'Immune Modulation', subcategory: 'Testicular', inStock: true, variants: [{ mg: 20, price: 58.00 }] },
-  { id: 'visoluten-20mg', name: 'Visoluten', category: 'Immune Modulation', subcategory: 'Ocular', inStock: true, variants: [{ mg: 20, price: 62.00 }] },
+  { id: 'rpf78-5mg', name: 'RPh-78', category: 'Immune', inStock: true, variants: [{ mg: 5, price: 95.00 }] },
+  { id: 'vilon-50mg', name: 'Vilon', category: 'Immune', subcategory: 'Thymic', inStock: true, variants: [{ mg: 50, price: 58.00 }] },
+  { id: 'bronchogen-20mg', name: 'Bronchogen', category: 'Immune', subcategory: 'Lung', inStock: true, variants: [{ mg: 20, price: 52.00 }] },
+  { id: 'cardogen-20mg', name: 'Cardogen', category: 'Immune', subcategory: 'Cardiac', inStock: true, variants: [{ mg: 20, price: 55.00 }] },
+  { id: 'livagen-20mg', name: 'Livagen', category: 'Immune', subcategory: 'Liver', inStock: true, variants: [{ mg: 20, price: 50.00 }] },
+  { id: 'prostatilen-20mg', name: 'Prostatilen', category: 'Immune', subcategory: 'Prostate', inStock: true, variants: [{ mg: 20, price: 58.00 }] },
+  { id: 'renovin-20mg', name: 'Renovin', category: 'Immune', subcategory: 'Renal', inStock: true, variants: [{ mg: 20, price: 55.00 }] },
+  { id: 'testagen-20mg', name: 'Testagen', category: 'Immune', subcategory: 'Testicular', inStock: true, variants: [{ mg: 20, price: 58.00 }] },
+  { id: 'visoluten-20mg', name: 'Visoluten', category: 'Immune', subcategory: 'Ocular', inStock: true, variants: [{ mg: 20, price: 62.00 }] },
 
   // ═══════════════════════════════════════════════════════════════
   // WEIGHT MANAGEMENT
   // ═══════════════════════════════════════════════════════════════
-  { id: 'tesofensine-500mcg', name: 'Tesofensine', category: 'Weight Management', inStock: true, variants: [{ mg: 0.5, price: 85.00 }] },
-  { id: 'tesofensine-1mg', name: 'Tesofensine', category: 'Weight Management', inStock: true, variants: [{ mg: 1, price: 145.00 }] },
-  { id: 'amlexanox-50mg', name: 'Amlexanox', category: 'Weight Management', subcategory: 'Metabolic', inStock: true, variants: [{ mg: 50, price: 105.00 }] },
-  { id: 'amlexanox-100mg', name: 'Amlexanox', category: 'Weight Management', subcategory: 'Metabolic', inStock: true, variants: [{ mg: 100, price: 175.00 }] },
+  { id: 'tesofensine-500mcg', name: 'Tesofensine', category: 'Metabolic', subcategory: 'Appetite Suppressant', inStock: true, variants: [{ mg: 0.5, price: 85.00 }] },
+  { id: 'tesofensine-1mg', name: 'Tesofensine', category: 'Metabolic', subcategory: 'Appetite Suppressant', inStock: true, variants: [{ mg: 1, price: 145.00 }] },
+  { id: 'amlexanox-50mg', name: 'Amlexanox', category: 'Metabolic', subcategory: 'TBK1 Inhibitor', inStock: true, variants: [{ mg: 50, price: 105.00 }] },
+  { id: 'amlexanox-100mg', name: 'Amlexanox', category: 'Metabolic', subcategory: 'TBK1 Inhibitor', inStock: true, variants: [{ mg: 100, price: 175.00 }] },
 
   // ═══════════════════════════════════════════════════════════════
   // PAIN & INFLAMMATION
